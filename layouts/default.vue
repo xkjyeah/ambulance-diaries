@@ -3,7 +3,21 @@
     <nuxt/>
   </div>
 </template>
-<style>
+<script>
+export default {
+  head: {
+    link: [
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+      //   integrity: 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u',
+      //   crossorigin: 'anonymous'
+      // }
+    ]
+  }
+}
+</script>
+<style lang="scss">
 html
 {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -44,9 +58,30 @@ html
   padding: 10px 30px;
   margin-left: 15px;
 }
-.button--grey:hover
-{
-  color: #fff;
-  background-color: #35495e;
+
+.table.table-striped {
+  border-collapse: collapse;
+  tbody {
+    tr:nth-child(odd) td {
+      background-color: #EEE;
+    }
+  }
+  tbody {
+    tr td {
+      padding: 0;
+    }
+    tr:hover  td {
+      background-color: #DEF;
+    }
+  }
+}
+.glyphicon.glyphicon-remove:after {
+  content: "❌"
+}
+.glyphicon.glyphicon-repeat:after {
+  content: "♺"
+}
+.glyphicon.glyphicon-plus:after {
+  content: "+"
 }
 </style>

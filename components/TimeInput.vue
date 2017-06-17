@@ -14,13 +14,18 @@ export default {
       if (!value) {
         this.$emit('input', null)
       } else {
-        const match = timeRE.match(value)
+        const match = value.match(timeRE)
         if (match) {
+          console.log([
+            leftPad(match[1], 2, '0'),
+            leftPad(match[2], 2, '0')
+          ].join(':'))
           this.$emit('input', [
-            leftPad(timeRE[1], 2, '0'),
-            leftPad(timeRE[2], 2, '0')
+            leftPad(match[1], 2, '0'),
+            leftPad(match[2], 2, '0')
           ].join(':'))
         } else {
+          this.$emit('input', this.value)
           // do nothing -- don't update
         }
       }

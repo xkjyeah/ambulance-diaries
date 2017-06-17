@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <tr v-for="week in weeks">
-        <td v-for="day in 7" @click="clicked(week[day])" :class="dayClasses(week[day])">
+        <td v-for="day in [0,1,2,3,4,5,6]" @click="clicked(week[day])" :class="dayClasses(week[day])">
           {{week[day].day}}
           <span class="annotation" v-if="week[day].annotation">
             {{week[day].annotation}}
@@ -31,6 +31,7 @@
 
 <script>
 import dateformat from 'dateformat'
+import _ from 'lodash'
 
 export default {
   props: [
@@ -47,8 +48,13 @@ export default {
       currentlyViewedMonth: this.month || new Date()
     }
   },
+  watch: {
+    currentlyViewedMonth (v) {
+      this.$emit('month-changed', v)
+    }
+  },
   computed: {
-    f() {
+    f () {
       return {date: dateformat}
     },
     prevMonth () {
@@ -112,18 +118,18 @@ export default {
           }
         }
 
-        for (let dateFns of dateFns) {
-          if (dateFns.date(new Date(canonicalTime + this.effectiveOffset))) {
-            Object.assign(initial, dateFns)
+        for (let dateFn of dateFns) {
+          if (dateFn.date(new Date(canonicalTime + this.effectiveOffset))) {
+            Object.assign(initial, dateFn)
           }
         }
         return initial
       }
     },
     weeks () {
-      return [0, 1, 2, 3, 4].map(
-        weekNumber => [0,1,2,3,4,5,6].map(weekDay => {
-          const canonical = ((weekNumber * 7) + weekDay) * 24*3600*1000 + this.firstDayOfCalendar.getTime()
+      return _.range(0, 5).map(
+        weekNumber => _.range(0, 7).map(weekDay => {
+          const canonical = ((weekNumber * 7) + weekDay) * 24 * 3600 * 1000 + this.firstDayOfCalendar.getTime()
           const canonicalDate = new Date(canonical)
 
           const specialData = this.specialDatesByTime(canonical)
@@ -179,7 +185,7 @@ export default {
       }
       return basic
     },
-    toUserDate(date) {
+    toUserDate (date) {
       return new Date(date.getTime() + this.effectiveOffset)
     },
   }

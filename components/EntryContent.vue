@@ -1,32 +1,32 @@
 <template>
-  <tr class="entry" :class="{
+  <div class="entry" :class="{
     cancelled: entry.status === 'cancelled'
     }">
-    <td class="index">
+    <div class="index">
       {{index + 1}}
-    </td>
-    <td class="team">
+    </div>
+    <div class="team">
       <input type="text" :value="entry.team" @input="updateEntry('team', $event.target.value)" />
-    </td>
-    <td class="time">
+    </div>
+    <div class="time">
       <TimeInput type="text" :value="entry.startTime" @input="updateEntry('startTime', $event)" />
       <TimeInput type="text" :value="entry.endTime" @input="updateEntry('endTime', $event)" />
-    </td>
-    <td>
+    </div>
+    <div class="source">
       <input type="text" :value="entry.source" @input="updateEntry('source', $event.target.value)" />
       <!-- <br/> -->
-    </td>
-    <td>
+    </div>
+    <div class="twoway">
       <label><input type="checkbox" :checked="entry.twoWay" @change="updateEntry('twoWay', $event.target.checked)"/>2W</label>
-    </td>
-    <td>
+    </div>
+    <div class="price">
       <input type="number" step="0.01" :value="entry.price" @input="updateEntry('price', $event.target.value)" />
-    </td>
-    <!-- <td>
+    </div>
+    <!-- <div>
       <input type="text" :value="entry.receiptNumber" @input="updateEntry('receiptNumber', $event.target.value)" />
-    </td> -->
-    <td><AutogrowTextarea :value="entry.description" @input="updateEntry('description', $event)" /></td>
-    <td>
+    </div> -->
+    <div class="description"><AutogrowTextarea :value="entry.description" @input="updateEntry('description', $event)" /></div>
+    <div class="actions">
       <!-- cancel / uncancel -->
       <a class="btn btn-xs btn-danger" @click="updateEntry('status', 'cancelled')"
           v-if="entry.status !== 'cancelled'">
@@ -41,16 +41,14 @@
       <!-- <button class="btn btn-default" @click="$emit('view-history')">
         <span class="glyphicon glyphicon-hourglass"></span>
       </button> -->
-    </td>
-    <td>??</td>
-    <td>
+    </div>
+    <div class="editedBy">??</div>
+    <div class="indicator">
       <SyncIndicator :lastModified="lastModified" :lastSaved="lastSaved" />
-    </td>
-  </tr>
+    </div>
+  </div>
 </template>
 <script>
-// import _ from 'lodash'
-// import * as firebase from 'firebase'
 
 function blankEntry () {
   return {
@@ -107,18 +105,19 @@ export default {
   }
 }
 </script>
-
+<style lang="scss" src="./entry.scss">
+</style>
 <style lang="scss">
 .entry {
-  td {
-    vertical-align: top;
-    label {
-      display: inline;
-      font-weight: normal;
-      margin: 0;
-      padding: 0;
-    }
-  }
+  // td {
+  //   vertical-align: top;
+  //   label {
+  //     display: inline;
+  //     font-weight: normal;
+  //     margin: 0;
+  //     padding: 0;
+  //   }
+  // }
   &.cancelled {
     &, & textarea, & input {
       text-decoration: line-through;
