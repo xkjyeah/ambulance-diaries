@@ -1,7 +1,21 @@
 <template>
   <div class="container" v-if="mount">
     <div class="left">
+
+      <div v-if="!user">
+        <button @click="logIn()">Log In</button>
+      </div>
+      <div v-else>
+        Logged in as {{user.email}}
+        <button @click="logOut()">Log Out</button>
+      </div>
+      <br/>
+      <br/>
+
       <Calendar :month="chosenDateAsDate" :value="chosenDateAsDate" />
+
+      <br/>
+      <br/>
 
       <div>
         <button @click="addEntry" class="btn btn-primary">
@@ -9,6 +23,10 @@
           Add Entry
         </button>
       </div>
+      <br/>
+      <br/>
+
+      <FirebaseACL :store="`acls/${this.$route.params.id}`"/>
       <div>
         <!-- <label>
           <input type="checkbox" v-model="showExtra" />
@@ -67,15 +85,31 @@ export default {
       filter: {
         order: 'asc',
         orderBy: 'data.startTime',
-      }
+      },
+      user: null,
     }
   },
   mounted () {
     this.mount = true
+    firebase.auth().onAuthStateChanged(() => {
+      this.user = _.clone(firebase.auth().currentUser)
+
+      // Update our user entry
+      const currentUser = firebase.auth().currentUser
+
+      console.log(currentUser)
+
+      firebase.database()
+      .ref(`/users/${currentUser.uid}`)
+      .set({
+        email: currentUser.email
+      })
+    })
   },
   components: {
     EntryContent: require('~/components/EntryContent.vue'),
     EntryHeader: require('~/components/EntryHeader.vue'),
+    FirebaseACL: require('~/components/FirebaseACL.vue'),
     Calendar: require('~/components/Calendar.vue'),
     SortTh: require('~/components/SortTh.vue'),
   },
@@ -282,6 +316,26 @@ export default {
           this.cacheResource.set(this.activeCount)
         }
       })
+    },
+    logIn () {
+      const provider = new firebase.auth.GoogleAuthProvider()
+
+      firebase.auth().signInWithPopup(provider)
+      .then(() => {
+        // Update our user entry
+        const currentUser = firebase.auth().currentUser
+
+        console.log(currentUser)
+
+        firebase.database()
+        .ref(`/users/${currentUser.uid}`)
+        .set({
+          email: currentUser.email
+        })
+      })
+    },
+    logOut () {
+      firebase.auth().signOut()
     }
   },
   destroyed () {
@@ -303,7 +357,7 @@ export default {
   flex-direction: row;
   width: 100%;
   .left {
-    flex: 0 0 auto;
+    flex: 0 1 240px;
   }
   .right {
     flex: 1 1 auto;

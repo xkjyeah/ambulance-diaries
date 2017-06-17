@@ -131,8 +131,6 @@ export default {
   }
 }
 </script>
-<style lang="scss" src="./entry.scss">
-</style>
 <style lang="scss">
 .entry {
   // td {
