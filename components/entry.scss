@@ -5,23 +5,41 @@
 
   & > div {
     flex: 0 0 4em;
+    padding: 5px;
     border-right: solid 1px black;
 
-    input {
-      width: 4em;
+    .textarea {
+      white-space: pre-wrap;
     }
 
+    &.index {
+      flex-basis: 2em;
+    }
     &.time {
       flex-basis: 8em;
     }
     &.description {
       flex-grow: 1;
     }
+    &.indicator, &.actions {
+      @media print {
+        display: none;
+      }
+    }
   }
   &.entry-header {
     font-weight: bold;
+    border-bottom: solid 0.5px black;
   }
-  &:not(.entry-header):nth-child(even) {
+  &.entry-content:nth-of-type(even) {
     background-color: #DDD;
+  }
+  &.entry-content:hover {
+    background-color: #DEF;
+  }
+  &.entry-content {
+    @media print {
+      border: dashed 0.5px black;
+    }
   }
 }

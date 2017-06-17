@@ -1,40 +1,64 @@
 <template>
-  <div class="entry" :class="{
+  <div class="entry entry-content" :class="{
     cancelled: entry.status === 'cancelled'
     }">
     <div class="index">
       {{index + 1}}
     </div>
-    <div class="team">
+    <DatasheetCell class="team"
+      :value="entry.team"
+      @input="updateEntry('team', $event)"
+    />
+    <!-- <div class="team">
       <input type="text" :value="entry.team" @input="updateEntry('team', $event.target.value)" />
-    </div>
-    <div class="time">
-      <TimeInput type="text" :value="entry.startTime" @input="updateEntry('startTime', $event)" />
-      <TimeInput type="text" :value="entry.endTime" @input="updateEntry('endTime', $event)" />
-    </div>
-    <div class="source">
-      <input type="text" :value="entry.source" @input="updateEntry('source', $event.target.value)" />
-      <!-- <br/> -->
-    </div>
+    </div> -->
+    <DatasheetCell :value="entry.startTime">
+      <TimeInput slot="editor" class="the-editor"
+        type="text" :value="entry.startTime"
+        @input="updateEntry('startTime', $event)" />
+    </DatasheetCell>
+
+    <DatasheetCell :value="entry.endTime">
+      <TimeInput slot="editor" class="the-editor"
+        type="text" :value="entry.endTime"
+        @input="updateEntry('endTime', $event)" />
+    </DatasheetCell>
+    <DatasheetCell class="source"
+      :value="entry.source"
+      @input="updateEntry('source', $event)"
+      />
     <div class="twoway">
-      <label><input type="checkbox" :checked="entry.twoWay" @change="updateEntry('twoWay', $event.target.checked)"/>2W</label>
+      <label><input type="checkbox" :checked="entry.twoWay" @change="updateEntry('twoWay', $event.target.checked)"/>2-way</label>
     </div>
-    <div class="price">
-      <input type="number" step="0.01" :value="entry.price" @input="updateEntry('price', $event.target.value)" />
-    </div>
+
+    <DatasheetCell :value="entry.price">
+      <PriceInput slot="editor" class="the-editor"
+        type="text" :value="entry.price"
+        @input="updateEntry('price', $event)" />
+    </DatasheetCell>
     <!-- <div>
       <input type="text" :value="entry.receiptNumber" @input="updateEntry('receiptNumber', $event.target.value)" />
     </div> -->
-    <div class="description"><AutogrowTextarea :value="entry.description" @input="updateEntry('description', $event)" /></div>
+    <DatasheetCell class="description"
+      :value="entry.description"
+      @input="updateEntry('description', $event)"
+      >
+      <div class="textarea">{{entry.description}}</div>
+    </DatasheetCell>
     <div class="actions">
       <!-- cancel / uncancel -->
-      <a class="btn btn-xs btn-danger" @click="updateEntry('status', 'cancelled')"
+      <a class="btn btn-xs btn-danger"
+        href="#"
+        @click.prevented="updateEntry('status', 'cancelled')"
           v-if="entry.status !== 'cancelled'">
-        <span class="glyphicon glyphicon-remove"></span>
+        Cancel
       </a>
-      <a class="btn btn-xs btn-success" @click="updateEntry('status', null)"
+      <a class="btn btn-xs btn-success"
+        href="#"
+        @click.prevented="updateEntry('status', null)"
           v-else>
-        <span class="glyphicon glyphicon-repeat"></span>
+        <!-- <span class="glyphicon glyphicon-repeat"></span> -->
+        Restore
       </a>
 
       <!-- view history -->
@@ -74,7 +98,9 @@ export default {
     }
   },
   components: {
+    DatasheetCell: require('./DatasheetCell.vue'),
     TimeInput: require('~/components/TimeInput.vue'),
+    PriceInput: require('~/components/PriceInput.vue'),
     SyncIndicator: require('~/components/SyncIndicator.vue'),
     AutogrowTextarea: require('~/components/AutogrowTextarea.vue')
   },
