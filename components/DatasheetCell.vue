@@ -4,7 +4,7 @@
     class="datasheet-cell" tabindex="1">
 
     <a href="#" @focus="showComponent" class="mock-focusable"
-        @click.prevented="1 == 0"
+        @click.prevent="1 == 0"
         :tabindex="isEditing ? -1 : 0">
       <slot>
         {{ value }}

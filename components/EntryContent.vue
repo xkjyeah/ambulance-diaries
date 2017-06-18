@@ -49,13 +49,13 @@
       <!-- cancel / uncancel -->
       <a class="btn btn-xs btn-danger"
         href="#"
-        @click.prevented="updateEntry('status', 'cancelled')"
+        @click.prevent="updateEntry('status', 'cancelled')"
           v-if="entry.status !== 'cancelled'">
         Cancel
       </a>
       <a class="btn btn-xs btn-success"
         href="#"
-        @click.prevented="updateEntry('status', null)"
+        @click.prevent="updateEntry('status', null)"
           v-else>
         <!-- <span class="glyphicon glyphicon-repeat"></span> -->
         Restore
