@@ -4,14 +4,14 @@
   <div v-for="email in emails">
     {{email.email}}
     <span v-if="iHaveAdmin">{{email.permissions}}</span>
-    <a href="#" @click="remove(email)" v-if="iHaveAdmin">Remove</a>
+    <a href="#" @click.prevented="remove(email)" v-if="iHaveAdmin">Remove</a>
   </div>
   <div v-if="iHaveAdmin">
     <hr/>
     Add another user:
     <input type="email" v-model="email" placeholder="john@example.com"/>
     <input type="email" v-model="permissions" placeholder="read,write,admin"/>
-    <a href="#" @click="add(email)">Add</a>
+    <a href="#" @click.prevented="add(email)">Add</a>
   </div>
 </div>
 </template>

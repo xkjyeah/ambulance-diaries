@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <Calendar />
+    Example diary:
+
+    <router-link :to="{
+      name: 'diaries-id-date',
+      params: { id: 'ambulance-medical-service' }
+      }">
+      Ambulance Medical Service
+    </router-link>
   </div>
 </template>
 

@@ -57,7 +57,7 @@
             @input="updateEntry(entry.id, $event)" />
         </template>
         <div v-else>
-          <img src="~assets/img/spinner.svg" />
+          <img src="../../../assets/img/spinner.svg" />
         </div>
       </div>
     </div>
@@ -97,13 +97,13 @@ export default {
       // Update our user entry
       const currentUser = firebase.auth().currentUser
 
-      console.log(currentUser)
-
-      firebase.database()
-      .ref(`/users/${currentUser.uid}`)
-      .set({
-        email: currentUser.email
-      })
+      if (currentUser) {
+        firebase.database()
+        .ref(`/users/${currentUser.uid}`)
+        .set({
+          email: currentUser.email
+        })
+      }
     })
   },
   components: {
