@@ -39319,6 +39319,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
+          if (!('button' in $event) && _vm._k($event.keyCode, "prevented")) { return null; }
           _vm.remove(email)
         }
       }
@@ -39369,6 +39370,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "prevented")) { return null; }
         _vm.add(_vm.email)
       }
     }
