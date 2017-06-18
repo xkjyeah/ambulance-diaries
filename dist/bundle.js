@@ -39122,11 +39122,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "glyphicon glyphicon-plus"
-  }), _vm._v("\n        Add Entry\n      ")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('FirebaseACL', {
+  }), _vm._v("\n        Add Entry\n      ")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.user) ? _c('FirebaseACL', {
     attrs: {
       "store": ("acls/" + (this.$route.params.id))
     }
-  }), _vm._v(" "), _c('div')], 1), _vm._v(" "), _c('div', {
+  }) : _vm._e(), _vm._v(" "), _c('div')], 1), _vm._v(" "), _c('div', {
     staticClass: "right"
   }, [(_vm.syncError) ? _c('div', [_vm._v("\n      Oh noes! Error synchronizing!\n      " + _vm._s(_vm.syncError.message) + "\n    ")]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "entry-list"
