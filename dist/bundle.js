@@ -24477,9 +24477,7 @@ function leftPad (str, len, ch) {
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(419)
 }
 var Component = __webpack_require__(11)(
@@ -24494,25 +24492,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\AutogrowTextarea.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] AutogrowTextarea.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-27eaf8a3", Component.options)
-  } else {
-    hotAPI.reload("data-v-27eaf8a3", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -24521,7 +24500,6 @@ module.exports = Component.exports
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(160),
@@ -24534,24 +24512,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\SortTh.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12a8c979", Component.options)
-  } else {
-    hotAPI.reload("data-v-12a8c979", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -30683,12 +30643,12 @@ module.exports = __webpack_require__(26);
 /* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n.entry {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n}\n.entry > div {\n    flex: 0 0 4em;\n    padding: 5px;\n    border-right: solid 1px black;\n}\n.entry > div .textarea {\n      white-space: pre-wrap;\n}\n.entry > div.index {\n      flex-basis: 2em;\n}\n.entry > div.time {\n      flex-basis: 8em;\n}\n.entry > div.description {\n      flex-grow: 1;\n}\n@media print {\n.entry > div.indicator, .entry > div.actions {\n        display: none;\n}\n}\n.entry.entry-header {\n    font-weight: bold;\n    border-bottom: solid 0.5px black;\n}\n.entry.entry-content:nth-of-type(even) {\n    background-color: #DDD;\n}\n.entry.entry-content:hover {\n    background-color: #DEF;\n}\n@media print {\n.entry.entry-content {\n      border: dashed 0.5px black;\n}\n}\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/components/entry.scss"],"names":[],"mappings":";AAAA;EACE,YAAY;EACZ,cAAc;EACd,oBAAoB;CAAE;AACtB;IACE,cAAc;IACd,aAAa;IACb,8BAA8B;CAAE;AAChC;MACE,sBAAsB;CAAE;AAC1B;MACE,gBAAgB;CAAE;AACpB;MACE,gBAAgB;CAAE;AACpB;MACE,aAAa;CAAE;AACjB;AACE;QACE,cAAc;CAAE;CAAE;AACxB;IACE,kBAAkB;IAClB,iCAAiC;CAAE;AACrC;IACE,uBAAuB;CAAE;AAC3B;IACE,uBAAuB;CAAE;AAC3B;AACE;MACE,2BAA2B;CAAE;CAAE","file":"entry.scss","sourcesContent":[".entry {\n  width: 100%;\n  display: flex;\n  flex-direction: row; }\n  .entry > div {\n    flex: 0 0 4em;\n    padding: 5px;\n    border-right: solid 1px black; }\n    .entry > div .textarea {\n      white-space: pre-wrap; }\n    .entry > div.index {\n      flex-basis: 2em; }\n    .entry > div.time {\n      flex-basis: 8em; }\n    .entry > div.description {\n      flex-grow: 1; }\n    @media print {\n      .entry > div.indicator, .entry > div.actions {\n        display: none; } }\n  .entry.entry-header {\n    font-weight: bold;\n    border-bottom: solid 0.5px black; }\n  .entry.entry-content:nth-of-type(even) {\n    background-color: #DDD; }\n  .entry.entry-content:hover {\n    background-color: #DEF; }\n  @media print {\n    .entry.entry-content {\n      border: dashed 0.5px black; } }\n"],"sourceRoot":""}]);
+exports.push([module.i, ".entry{width:100%;display:flex;flex-direction:row}.entry>div{flex:0 0 4em;padding:5px;border-right:1px solid #000}.entry>div .textarea{white-space:pre-wrap}.entry>div.index{flex-basis:2em}.entry>div.time{flex-basis:8em}.entry>div.description{flex-grow:1}@media print{.entry>div.actions,.entry>div.indicator{display:none}}.entry.entry-header{font-weight:700;border-bottom:.5px solid #000}.entry.entry-content:nth-of-type(2n){background-color:#ddd}.entry.entry-content:hover{background-color:#def}@media print{.entry.entry-content{border:.5px dashed #000}}", ""]);
 
 // exports
 
@@ -30697,12 +30657,12 @@ exports.push([module.i, "\n.entry {\n  width: 100%;\n  display: flex;\n  flex-di
 /* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\ntable.date-picker {\n  border-collapse: collapse;\n}\ntable.date-picker th {\n    background-color: #DDDDDD;\n    width: 2em;\n}\ntable.date-picker td, table.date-picker th {\n    text-align: center;\n    padding: 0em 0.5em 1em;\n    cursor: pointer;\n    border: solid 0.5px #CCC;\n}\ntable.date-picker td {\n    position: relative;\n}\ntable.date-picker td .annotation {\n      position: absolute;\n      background-color: #F05;\n      bottom: 0;\n      right: 0;\n}\ntable.date-picker td.today {\n      text-decoration: underline;\n}\ntable.date-picker td:hover {\n      background-color: #FDD;\n}\ntable.date-picker td.selected {\n      background-color: #800;\n      color: #FFF;\n}\ntable.date-picker td.different-month {\n      color: #DDD;\n}\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/components/Calendar.vue"],"names":[],"mappings":";AAAA;EACE,0BAA0B;CAAE;AAC5B;IACE,0BAA0B;IAC1B,WAAW;CAAE;AACf;IACE,mBAAmB;IACnB,uBAAuB;IACvB,gBAAgB;IAChB,yBAAyB;CAAE;AAC7B;IACE,mBAAmB;CAAE;AACrB;MACE,mBAAmB;MACnB,uBAAuB;MACvB,UAAU;MACV,SAAS;CAAE;AACb;MACE,2BAA2B;CAAE;AAC/B;MACE,uBAAuB;CAAE;AAC3B;MACE,uBAAuB;MACvB,YAAY;CAAE;AAChB;MACE,YAAY;CAAE","file":"Calendar.vue","sourcesContent":["table.date-picker {\n  border-collapse: collapse; }\n  table.date-picker th {\n    background-color: #DDDDDD;\n    width: 2em; }\n  table.date-picker td, table.date-picker th {\n    text-align: center;\n    padding: 0em 0.5em 1em;\n    cursor: pointer;\n    border: solid 0.5px #CCC; }\n  table.date-picker td {\n    position: relative; }\n    table.date-picker td .annotation {\n      position: absolute;\n      background-color: #F05;\n      bottom: 0;\n      right: 0; }\n    table.date-picker td.today {\n      text-decoration: underline; }\n    table.date-picker td:hover {\n      background-color: #FDD; }\n    table.date-picker td.selected {\n      background-color: #800;\n      color: #FFF; }\n    table.date-picker td.different-month {\n      color: #DDD; }\n"],"sourceRoot":""}]);
+exports.push([module.i, "table.date-picker{border-collapse:collapse}table.date-picker th{background-color:#ddd;width:2em}table.date-picker td,table.date-picker th{text-align:center;padding:0 .5em 1em;cursor:pointer;border:.5px solid #ccc}table.date-picker td{position:relative}table.date-picker td .annotation{position:absolute;background-color:#f05;bottom:0;right:0}table.date-picker td.today{text-decoration:underline}table.date-picker td:hover{background-color:#fdd}table.date-picker td.selected{background-color:#800;color:#fff}table.date-picker td.different-month{color:#ddd}", ""]);
 
 // exports
 
@@ -30711,12 +30671,12 @@ exports.push([module.i, "\ntable.date-picker {\n  border-collapse: collapse;\n}\
 /* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\ntextarea.autogrow {\r\n  resize: none;\r\n  font-family: sans-serif;\r\n  overflow: hidden;\r\n  transition: height 0.1s linear;\n}\r\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/components/AutogrowTextarea.vue?8c97a22a"],"names":[],"mappings":";AAsCA;EACA,aAAA;EACA,wBAAA;EACA,iBAAA;EACA,+BAAA;CACA","file":"AutogrowTextarea.vue","sourcesContent":["<template>\r\n  <textarea :value=\"value\" @input=\"$emit('input', $event.target.value)\"\r\n    :style=\"{height: height}\"\r\n    @keyup=\"regrow\"\r\n    ref=\"textarea\"\r\n    class=\"autogrow\"/>\r\n</template>\r\n<script>\r\nexport default {\r\n  props: [\r\n    'defaultHeight',\r\n    'value'\r\n  ],\r\n  data () {\r\n    return {\r\n      height: this.defaultHeight || '2em'\r\n    }\r\n  },\r\n  mounted () {\r\n    // this.$watch('value', () => this.regrow(), {immediate: true})\r\n    this.regrow()\r\n  },\r\n  methods: {\r\n    regrow () {\r\n      // Auto-Grow-TextArea script.\r\n      // Script copyright (C) 2011 www.cryer.co.uk.\r\n      // Script is free to use provided this copyright header is included.\r\n      const textField = this.$refs.textarea\r\n\r\n      if (textField.clientHeight < textField.scrollHeight) {\r\n        this.height = textField.scrollHeight + 'px'\r\n      }\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style>\r\ntextarea.autogrow {\r\n  resize: none;\r\n  font-family: sans-serif;\r\n  overflow: hidden;\r\n  transition: height 0.1s linear;\r\n}\r\n</style>\r\n"],"sourceRoot":""}]);
+exports.push([module.i, "textarea.autogrow{resize:none;font-family:sans-serif;overflow:hidden;transition:height .1s linear}", ""]);
 
 // exports
 
@@ -30725,12 +30685,12 @@ exports.push([module.i, "\ntextarea.autogrow {\r\n  resize: none;\r\n  font-fami
 /* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\nhtml {\n  font-family: \"Source Sans Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n  font-size: 16px;\n  word-spacing: 1px;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  box-sizing: border-box;\n}\n*, *:before, *:after {\n  box-sizing: border-box;\n  margin: 0;\n}\n.button--green {\n  display: inline-block;\n  border-radius: 4px;\n  border: 1px solid #3b8070;\n  color: #3b8070;\n  text-decoration: none;\n  padding: 10px 30px;\n}\n.button--green:hover {\n  color: #fff;\n  background-color: #3b8070;\n}\n.button--grey {\n  display: inline-block;\n  border-radius: 4px;\n  border: 1px solid #35495e;\n  color: #35495e;\n  text-decoration: none;\n  padding: 10px 30px;\n  margin-left: 15px;\n}\n.table.table-striped {\n  border-collapse: collapse;\n}\n.table.table-striped tbody tr:nth-child(odd) td {\n    background-color: #EEE;\n}\n.table.table-striped tbody tr td {\n    padding: 0;\n}\n.table.table-striped tbody tr:hover td {\n    background-color: #DEF;\n}\n.glyphicon.glyphicon-remove:after {\n  content: \"\\274C\";\n}\n.glyphicon.glyphicon-repeat:after {\n  content: \"\\267A\";\n}\n.glyphicon.glyphicon-plus:after {\n  content: \"+\";\n}\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/layouts/default.vue"],"names":[],"mappings":";AAAA,iBAAiB;AACjB;EACE,2HAA2H;EAC3H,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;EAC3B,+BAA+B;EAC/B,mCAAmC;EACnC,oCAAoC;EACpC,uBAAuB;CAAE;AAE3B;EACE,uBAAuB;EACvB,UAAU;CAAE;AAEd;EACE,sBAAsB;EACtB,mBAAmB;EACnB,0BAA0B;EAC1B,eAAe;EACf,sBAAsB;EACtB,mBAAmB;CAAE;AAEvB;EACE,YAAY;EACZ,0BAA0B;CAAE;AAE9B;EACE,sBAAsB;EACtB,mBAAmB;EACnB,0BAA0B;EAC1B,eAAe;EACf,sBAAsB;EACtB,mBAAmB;EACnB,kBAAkB;CAAE;AAEtB;EACE,0BAA0B;CAAE;AAC5B;IACE,uBAAuB;CAAE;AAC3B;IACE,WAAW;CAAE;AACf;IACE,uBAAuB;CAAE;AAE7B;EACE,iBAAa;CAAE;AAEjB;EACE,iBAAa;CAAE;AAEjB;EACE,aAAa;CAAE","file":"default.vue","sourcesContent":["@charset \"UTF-8\";\nhtml {\n  font-family: \"Source Sans Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n  font-size: 16px;\n  word-spacing: 1px;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  box-sizing: border-box; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  margin: 0; }\n\n.button--green {\n  display: inline-block;\n  border-radius: 4px;\n  border: 1px solid #3b8070;\n  color: #3b8070;\n  text-decoration: none;\n  padding: 10px 30px; }\n\n.button--green:hover {\n  color: #fff;\n  background-color: #3b8070; }\n\n.button--grey {\n  display: inline-block;\n  border-radius: 4px;\n  border: 1px solid #35495e;\n  color: #35495e;\n  text-decoration: none;\n  padding: 10px 30px;\n  margin-left: 15px; }\n\n.table.table-striped {\n  border-collapse: collapse; }\n  .table.table-striped tbody tr:nth-child(odd) td {\n    background-color: #EEE; }\n  .table.table-striped tbody tr td {\n    padding: 0; }\n  .table.table-striped tbody tr:hover td {\n    background-color: #DEF; }\n\n.glyphicon.glyphicon-remove:after {\n  content: \"❌\"; }\n\n.glyphicon.glyphicon-repeat:after {\n  content: \"♺\"; }\n\n.glyphicon.glyphicon-plus:after {\n  content: \"+\"; }\n"],"sourceRoot":""}]);
+exports.push([module.i, "html{font-family:Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:16px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.table.table-striped{border-collapse:collapse}.table.table-striped tbody tr:nth-child(odd) td{background-color:#eee}.table.table-striped tbody tr td{padding:0}.table.table-striped tbody tr:hover td{background-color:#def}.glyphicon.glyphicon-remove:after{content:\"\\274C\"}.glyphicon.glyphicon-repeat:after{content:\"\\267A\"}.glyphicon.glyphicon-plus:after{content:\"+\"}", ""]);
 
 // exports
 
@@ -30739,12 +30699,12 @@ exports.push([module.i, "\n@charset \"UTF-8\";\nhtml {\n  font-family: \"Source 
 /* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n.mock-focusable {\n  text-decoration: none;\n  color: #000;\n}\n.datasheet-cell {\n  position: relative;\n}\n.the-editor {\n  position: absolute;\n  top: 0;\n  min-height: 100%;\n  left: 0;\n  width: 100%;\n}\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/components/DatasheetCell.vue"],"names":[],"mappings":";AAAA;EACE,sBAAsB;EACtB,YAAY;CAAE;AAEhB;EACE,mBAAmB;CAAE;AAEvB;EACE,mBAAmB;EACnB,OAAO;EACP,iBAAiB;EACjB,QAAQ;EACR,YAAY;CAAE","file":"DatasheetCell.vue","sourcesContent":[".mock-focusable {\n  text-decoration: none;\n  color: #000; }\n\n.datasheet-cell {\n  position: relative; }\n\n.the-editor {\n  position: absolute;\n  top: 0;\n  min-height: 100%;\n  left: 0;\n  width: 100%; }\n"],"sourceRoot":""}]);
+exports.push([module.i, ".mock-focusable{text-decoration:none;color:#000}.datasheet-cell{position:relative}.the-editor{position:absolute;top:0;min-height:100%;left:0;width:100%}", ""]);
 
 // exports
 
@@ -30753,12 +30713,12 @@ exports.push([module.i, "\n.mock-focusable {\n  text-decoration: none;\n  color:
 /* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\n@media print {\n.container .left {\n    display: none;\n}\n}\n.container {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n}\n.container .left {\n    flex: 0 1 240px;\n}\n.container .right {\n    flex: 1 1 auto;\n}\n.entry-list {\n  width: 100%;\n}\n.entry-list tbody tr td.team input[type=text] {\n    width: 100%;\n}\n.entry-list tbody tr td.index {\n    text-align: center;\n}\n.entry-list tbody tr td.time input[type=\"text\"], .entry-list tbody tr td.time input[type=\"number\"] {\n    width: 50%;\n}\n.entry-list thead tr th.team {\n    width: 8em;\n}\n.entry-list thead tr th.time {\n    width: 8em;\n}\n.entry-list thead tr th.description {\n    width: 50%;\n}\n.entry-list thead tr th {\n    width: 4em;\n    border-right: solid 0.5px black;\n    border-left: solid 0.5px black;\n}\n.entry-list thead tr th:last-child {\n    width: 5%;\n}\n.entry-list tbody tr td {\n    position: relative;\n    line-height: 1.0;\n    border-right: solid 0.5px black;\n    border-left: solid 0.5px black;\n}\n.entry-list tbody tr td input[type=\"text\"], .entry-list tbody tr td input[type=\"number\"] {\n      width: 4em;\n}\n.entry-list tbody tr td textarea {\n      width: 100%;\n}\n.entry-list tbody tr td input[type=\"text\"], .entry-list tbody tr td textarea, .entry-list tbody tr td input[type=\"number\"] {\n      background: transparent;\n      border: solid 0.5px #DDD;\n      margin: 0;\n      padding: 0;\n      height: 20px;\n      display: inline-block;\n      vertical-align: baseline;\n}\n.entry-list th:not(.sortable) {\n    background-color: #DDD;\n}\n.entry-list th.sortable {\n    background-color: #FFF;\n    position: relative;\n    cursor: pointer;\n}\n.entry-list th.sortable.sort-asc:after {\n      content: \"\\2C4\";\n      position: absolute;\n      bottom: 0.5em;\n      right: 0.5em;\n}\n.entry-list th.sortable.sort-desc:after {\n      content: \"\\2C5\";\n      position: absolute;\n      bottom: 0.5em;\n      right: 0.5em;\n}\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/pages/diaries/_id/_date.vue"],"names":[],"mappings":";AAAA,iBAAiB;AACjB;AACE;IACE,cAAc;CAAE;CAAE;AAEtB;EACE,cAAc;EACd,oBAAoB;EACpB,YAAY;CAAE;AACd;IACE,gBAAgB;CAAE;AACpB;IACE,eAAe;CAAE;AAErB;EACE,YAAY;CAAE;AACd;IACE,YAAY;CAAE;AAChB;IACE,mBAAmB;CAAE;AACvB;IACE,WAAW;CAAE;AACf;IACE,WAAW;CAAE;AACf;IACE,WAAW;CAAE;AACf;IACE,WAAW;CAAE;AACf;IACE,WAAW;IACX,gCAAgC;IAChC,+BAA+B;CAAE;AACnC;IACE,UAAU;CAAE;AACd;IACE,mBAAmB;IACnB,iBAAiB;IACjB,gCAAgC;IAChC,+BAA+B;CAAE;AACjC;MACE,WAAW;CAAE;AACf;MACE,YAAY;CAAE;AAChB;MACE,wBAAwB;MACxB,yBAAyB;MACzB,UAAU;MACV,WAAW;MACX,aAAa;MACb,sBAAsB;MACtB,yBAAyB;CAAE;AAC/B;IACE,uBAAuB;CAAE;AAC3B;IACE,uBAAuB;IACvB,mBAAmB;IACnB,gBAAgB;CAAE;AAClB;MACE,gBAAa;MACb,mBAAmB;MACnB,cAAc;MACd,aAAa;CAAE;AACjB;MACE,gBAAa;MACb,mBAAmB;MACnB,cAAc;MACd,aAAa;CAAE","file":"_date.vue","sourcesContent":["@charset \"UTF-8\";\n@media print {\n  .container .left {\n    display: none; } }\n\n.container {\n  display: flex;\n  flex-direction: row;\n  width: 100%; }\n  .container .left {\n    flex: 0 1 240px; }\n  .container .right {\n    flex: 1 1 auto; }\n\n.entry-list {\n  width: 100%; }\n  .entry-list tbody tr td.team input[type=text] {\n    width: 100%; }\n  .entry-list tbody tr td.index {\n    text-align: center; }\n  .entry-list tbody tr td.time input[type=\"text\"], .entry-list tbody tr td.time input[type=\"number\"] {\n    width: 50%; }\n  .entry-list thead tr th.team {\n    width: 8em; }\n  .entry-list thead tr th.time {\n    width: 8em; }\n  .entry-list thead tr th.description {\n    width: 50%; }\n  .entry-list thead tr th {\n    width: 4em;\n    border-right: solid 0.5px black;\n    border-left: solid 0.5px black; }\n  .entry-list thead tr th:last-child {\n    width: 5%; }\n  .entry-list tbody tr td {\n    position: relative;\n    line-height: 1.0;\n    border-right: solid 0.5px black;\n    border-left: solid 0.5px black; }\n    .entry-list tbody tr td input[type=\"text\"], .entry-list tbody tr td input[type=\"number\"] {\n      width: 4em; }\n    .entry-list tbody tr td textarea {\n      width: 100%; }\n    .entry-list tbody tr td input[type=\"text\"], .entry-list tbody tr td textarea, .entry-list tbody tr td input[type=\"number\"] {\n      background: transparent;\n      border: solid 0.5px #DDD;\n      margin: 0;\n      padding: 0;\n      height: 20px;\n      display: inline-block;\n      vertical-align: baseline; }\n  .entry-list th:not(.sortable) {\n    background-color: #DDD; }\n  .entry-list th.sortable {\n    background-color: #FFF;\n    position: relative;\n    cursor: pointer; }\n    .entry-list th.sortable.sort-asc:after {\n      content: \"˄\";\n      position: absolute;\n      bottom: 0.5em;\n      right: 0.5em; }\n    .entry-list th.sortable.sort-desc:after {\n      content: \"˅\";\n      position: absolute;\n      bottom: 0.5em;\n      right: 0.5em; }\n"],"sourceRoot":""}]);
+exports.push([module.i, "@media print{.container .left{display:none}}.container{display:flex;flex-direction:row;width:100%}.container .left{flex:0 1 240px}.container .right{flex:1 1 auto}.entry-list,.entry-list tbody tr td.team input[type=text]{width:100%}.entry-list tbody tr td.index{text-align:center}.entry-list tbody tr td.time input[type=number],.entry-list tbody tr td.time input[type=text]{width:50%}.entry-list thead tr th.team,.entry-list thead tr th.time{width:8em}.entry-list thead tr th.description{width:50%}.entry-list thead tr th{width:4em;border-right:.5px solid #000;border-left:.5px solid #000}.entry-list thead tr th:last-child{width:5%}.entry-list tbody tr td{position:relative;line-height:1;border-right:.5px solid #000;border-left:.5px solid #000}.entry-list tbody tr td input[type=number],.entry-list tbody tr td input[type=text]{width:4em}.entry-list tbody tr td textarea{width:100%}.entry-list tbody tr td input[type=number],.entry-list tbody tr td input[type=text],.entry-list tbody tr td textarea{background:transparent;border:.5px solid #ddd;margin:0;padding:0;height:20px;display:inline-block;vertical-align:baseline}.entry-list th:not(.sortable){background-color:#ddd}.entry-list th.sortable{background-color:#fff;position:relative;cursor:pointer}.entry-list th.sortable.sort-asc:after{content:\"\\2C4\";position:absolute;bottom:.5em;right:.5em}.entry-list th.sortable.sort-desc:after{content:\"\\2C5\";position:absolute;bottom:.5em;right:.5em}", ""]);
 
 // exports
 
@@ -30767,12 +30727,12 @@ exports.push([module.i, "\n@charset \"UTF-8\";\n@media print {\n.container .left
 /* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n.entry.cancelled, .entry.cancelled textarea, .entry.cancelled input {\n  text-decoration: line-through;\n}\n", "", {"version":3,"sources":["C:/Users/Daniel/Desktop/case-calendar/components/EntryContent.vue"],"names":[],"mappings":";AAAA;EACE,8BAA8B;CAAE","file":"EntryContent.vue","sourcesContent":[".entry.cancelled, .entry.cancelled textarea, .entry.cancelled input {\n  text-decoration: line-through; }\n"],"sourceRoot":""}]);
+exports.push([module.i, ".entry.cancelled,.entry.cancelled input,.entry.cancelled textarea{text-decoration:line-through}", ""]);
 
 // exports
 
@@ -38564,9 +38524,7 @@ function hasOwnProperty(obj, prop) {
 /* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(418)
 }
 var Component = __webpack_require__(11)(
@@ -38581,25 +38539,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\Calendar.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Calendar.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12397e45", Component.options)
-  } else {
-    hotAPI.reload("data-v-12397e45", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38608,9 +38547,7 @@ module.exports = Component.exports
 /* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(421)
 }
 var Component = __webpack_require__(11)(
@@ -38625,25 +38562,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\DatasheetCell.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] DatasheetCell.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6d1ea000", Component.options)
-  } else {
-    hotAPI.reload("data-v-6d1ea000", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38652,7 +38570,6 @@ module.exports = Component.exports
 /* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(155),
@@ -38665,25 +38582,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\DatePicker.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] DatePicker.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ee1c63ba", Component.options)
-  } else {
-    hotAPI.reload("data-v-ee1c63ba", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38692,9 +38590,7 @@ module.exports = Component.exports
 /* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(423)
 }
 var Component = __webpack_require__(11)(
@@ -38709,25 +38605,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\EntryContent.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] EntryContent.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7162d2a4", Component.options)
-  } else {
-    hotAPI.reload("data-v-7162d2a4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38736,9 +38613,7 @@ module.exports = Component.exports
 /* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(417)
 }
 var Component = __webpack_require__(11)(
@@ -38753,25 +38628,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\EntryHeader.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] EntryHeader.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0e4b0a30", Component.options)
-  } else {
-    hotAPI.reload("data-v-0e4b0a30", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38780,7 +38636,6 @@ module.exports = Component.exports
 /* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(158),
@@ -38793,25 +38648,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\FirebaseACL.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] FirebaseACL.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-66a1e84c", Component.options)
-  } else {
-    hotAPI.reload("data-v-66a1e84c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38820,7 +38656,6 @@ module.exports = Component.exports
 /* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(159),
@@ -38833,25 +38668,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\PriceInput.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] PriceInput.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d8a53470", Component.options)
-  } else {
-    hotAPI.reload("data-v-d8a53470", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38860,7 +38676,6 @@ module.exports = Component.exports
 /* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(161),
@@ -38873,25 +38688,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\SyncIndicator.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] SyncIndicator.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0d5ce83d", Component.options)
-  } else {
-    hotAPI.reload("data-v-0d5ce83d", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38900,7 +38696,6 @@ module.exports = Component.exports
 /* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(162),
@@ -38913,25 +38708,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\components\\TimeInput.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] TimeInput.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bd4df0f4", Component.options)
-  } else {
-    hotAPI.reload("data-v-bd4df0f4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38940,9 +38716,7 @@ module.exports = Component.exports
 /* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(420)
 }
 var Component = __webpack_require__(11)(
@@ -38957,25 +38731,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\layouts\\default.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] default.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-303a15c9", Component.options)
-  } else {
-    hotAPI.reload("data-v-303a15c9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -38984,9 +38739,7 @@ module.exports = Component.exports
 /* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(422)
 }
 var Component = __webpack_require__(11)(
@@ -39001,25 +38754,6 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\pages\\diaries\\_id\\_date.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] _date.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6d7b4e8d", Component.options)
-  } else {
-    hotAPI.reload("data-v-6d7b4e8d", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -39028,7 +38762,6 @@ module.exports = Component.exports
 /* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
 var Component = __webpack_require__(11)(
   /* script */
   __webpack_require__(165),
@@ -39041,47 +38774,21 @@ var Component = __webpack_require__(11)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Daniel\\Desktop\\case-calendar\\pages\\index.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2ec4b0d5", Component.options)
-  } else {
-    hotAPI.reload("data-v-2ec4b0d5", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
 
 /***/ }),
 /* 403 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.status2 === 'dirty') ? _c('span', [_vm._v("\n  …\n")]) : (_vm.status2 === 'justSaved') ? _c('span', [_vm._v("\n  ✔\n")]) : _vm._e()
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0d5ce83d", module.exports)
-  }
-}
 
 /***/ }),
 /* 404 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -39199,17 +38906,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0e4b0a30", module.exports)
-  }
-}
 
 /***/ }),
 /* 405 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('DatePicker', {
@@ -39228,17 +38928,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-12397e45", module.exports)
-  }
-}
 
 /***/ }),
 /* 406 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('textarea', {
@@ -39258,17 +38951,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-27eaf8a3", module.exports)
-  }
-}
 
 /***/ }),
 /* 407 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -39284,32 +38970,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("\n    Ambulance Medical Service\n  ")])], 1)
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2ec4b0d5", module.exports)
-  }
-}
 
 /***/ }),
 /* 408 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('nuxt')], 1)
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-303a15c9", module.exports)
-  }
-}
 
 /***/ }),
 /* 409 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('h3', [_vm._v("This calendar is shared with:")]), _vm._v(" "), _vm._l((_vm.emails), function(email) {
@@ -39376,17 +39048,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Add")])]) : _vm._e()], 2)
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-66a1e84c", module.exports)
-  }
-}
 
 /***/ }),
 /* 410 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -39423,13 +39088,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])] : _vm._e()], 2)
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6d1ea000", module.exports)
-  }
-}
 
 /***/ }),
 /* 411 */
@@ -39504,17 +39162,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])], 2)])]) : _c('div', [_vm._v("\n  Not mounted for scriptsrc\n")])
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6d7b4e8d", module.exports)
-  }
-}
 
 /***/ }),
 /* 412 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -39653,17 +39304,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1)
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-7162d2a4", module.exports)
-  }
-}
 
 /***/ }),
 /* 413 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('input', {
@@ -39678,17 +39322,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-bd4df0f4", module.exports)
-  }
-}
 
 /***/ }),
 /* 414 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('input', {
@@ -39703,17 +39340,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })
 },staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-d8a53470", module.exports)
-  }
-}
 
 /***/ }),
 /* 415 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 module.exports={render:function (){
 var this$1 = this;
@@ -39751,13 +39381,6 @@ var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('th', [_vm._v("S")]), _vm._v(" "), _c('th', [_vm._v("M")]), _vm._v(" "), _c('th', [_vm._v("T")]), _vm._v(" "), _c('th', [_vm._v("W")]), _vm._v(" "), _c('th', [_vm._v("T")]), _vm._v(" "), _c('th', [_vm._v("F")]), _vm._v(" "), _c('th', [_vm._v("S")])])
 }]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-ee1c63ba", module.exports)
-  }
-}
 
 /***/ }),
 /* 416 */
@@ -42243,20 +41866,7 @@ var content = __webpack_require__(348);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("a42d1400", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0e4b0a30\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!./entry.scss", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0e4b0a30\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!./entry.scss");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("ac521e1e", content, true);
 
 /***/ }),
 /* 418 */
@@ -42269,20 +41879,7 @@ var content = __webpack_require__(349);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("e4b0bda4", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12397e45\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Calendar.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12397e45\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Calendar.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("d60ee746", content, true);
 
 /***/ }),
 /* 419 */
@@ -42295,20 +41892,7 @@ var content = __webpack_require__(350);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("56875af2", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27eaf8a3\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AutogrowTextarea.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27eaf8a3\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AutogrowTextarea.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("61e88d14", content, true);
 
 /***/ }),
 /* 420 */
@@ -42321,20 +41905,7 @@ var content = __webpack_require__(351);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("4ce3be54", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-303a15c9\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./default.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-303a15c9\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./default.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("5deb93c7", content, true);
 
 /***/ }),
 /* 421 */
@@ -42347,20 +41918,7 @@ var content = __webpack_require__(352);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("4c8920a8", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d1ea000\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DatasheetCell.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d1ea000\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DatasheetCell.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("377929dd", content, true);
 
 /***/ }),
 /* 422 */
@@ -42373,20 +41931,7 @@ var content = __webpack_require__(353);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("7120ad5b", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d7b4e8d\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_date.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d7b4e8d\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_date.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("0200838c", content, true);
 
 /***/ }),
 /* 423 */
@@ -42399,20 +41944,7 @@ var content = __webpack_require__(354);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(46)("2e6c9cc4", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7162d2a4\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EntryContent.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7162d2a4\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EntryContent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+var update = __webpack_require__(46)("00334f1a", content, true);
 
 /***/ }),
 /* 424 */
