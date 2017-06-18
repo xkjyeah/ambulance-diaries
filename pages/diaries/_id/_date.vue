@@ -26,7 +26,7 @@
       <br/>
       <br/>
 
-      <FirebaseACL :store="`acls/${this.$route.params.id}`"/>
+      <FirebaseACL v-if="user" :store="`acls/${this.$route.params.id}`"/>
       <div>
         <!-- <label>
           <input type="checkbox" v-model="showExtra" />
