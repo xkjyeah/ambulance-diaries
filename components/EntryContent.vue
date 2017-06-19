@@ -19,7 +19,7 @@
         @input="updateEntry('startTime', $event)" />
     </DatasheetCell>
 
-    <DatasheetCell :value="entry.endTime">
+    <DatasheetCell :value="entry.endTime" :class="{invalid: !entry.endTime && entry.twoWay}">
       <TimeInput slot="editor" class="the-editor"
         type="text" :value="entry.endTime"
         @input="updateEntry('endTime', $event)" />
@@ -149,6 +149,10 @@ export default {
     &, & textarea, & input {
       text-decoration: line-through;
     }
+  }
+
+  .invalid {
+    background-color: #FCC;
   }
 }
 </style>
