@@ -176,20 +176,30 @@ export default {
       return result
     },
     sortedEntries () {
-      /* eslint-disable no-unused-vars */
-      // const [oldEntries, newEntries] = _.partition(this.mergedEntries, 'lastCommitId')
-      const [oldEntries, newEntries] = _.partition(this.mergedEntries, x => x.lastSaved)
-      const [active, cancelled] = _.partition(oldEntries, x => _.get(x, 'data.status') !== 'cancelled')
+      const priorities = [
+        t => (_.get(t, 'data.source') || '').toLowerCase().indexOf('event') !== -1,
+        t => (_.get(t, 'data.status')) !== 'cancelled',
+        t => t.lastSaved,
+      ]
 
-      return _.orderBy(
-        active,
-        [this.filter.orderBy],
-        [this.filter.order]
-      ).concat(_.orderBy(
-        cancelled,
-        [this.filter.orderBy],
-        [this.filter.order]
-      )).concat(newEntries)
+      console.log(this.mergedEntries)
+
+      const [partitioned, lastPartition] = priorities.reduce(([acc, remaining], f) => {
+        const [yes, no] = _.partition(remaining, f)
+        acc.push(yes)
+        return [acc, no]
+      }, [[], this.mergedEntries])
+
+      partitioned.push(lastPartition)
+
+      return _.flatten(
+        partitioned
+        .map(r => _.orderBy(
+          r,
+          [this.filter.orderBy],
+          [this.filter.order]
+        ))
+      )
     },
     activeCount () {
       return this.entries && this.entries.filter(x => x.data.status !== 'cancelled').length
@@ -242,7 +252,10 @@ export default {
         ...this.uncommitted,
         [entryId]: {
           id: entryId,
-          data: entry,
+          data: {
+            ...entry,
+            lastEditedBy: this.user.displayName,
+          },
           lastModified: Date.now(),
         }
       }
@@ -260,8 +273,6 @@ export default {
         const updates = _(changes)
           .values()
           .map(c => {
-            const newKey = this.dbResource.push().key
-
             return [
               `/${c.id}`,
               c

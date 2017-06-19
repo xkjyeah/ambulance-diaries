@@ -1,6 +1,7 @@
 <template>
   <div class="entry entry-content" :class="{
-    cancelled: entry.status === 'cancelled'
+    cancelled: entry.status === 'cancelled',
+    'is-event': (/event/i).test(entry.source)
     }">
     <div class="index">
       {{index + 1}}
@@ -28,7 +29,7 @@
       @input="updateEntry('source', $event)"
       />
     <div class="twoway">
-      <label><input type="checkbox" :checked="entry.twoWay" @change="updateEntry('twoWay', $event.target.checked)"/>2-way</label>
+      <TwoWayIndicator :value="entry.twoWay" @input="updateEntry('twoWay', $event)"/>
     </div>
 
     <DatasheetCell :value="entry.price">
@@ -66,7 +67,7 @@
         <span class="glyphicon glyphicon-hourglass"></span>
       </button> -->
     </div>
-    <div class="editedBy">??</div>
+    <div class="editedBy"><Initials :value="entry.lastEditedBy" /></div>
     <div class="indicator">
       <SyncIndicator :lastModified="lastModified" :lastSaved="lastSaved" />
     </div>
@@ -102,6 +103,8 @@ export default {
     TimeInput: require('~/components/TimeInput.vue'),
     PriceInput: require('~/components/PriceInput.vue'),
     SyncIndicator: require('~/components/SyncIndicator.vue'),
+    TwoWayIndicator: require('~/components/TwoWayIndicator.vue'),
+    Initials: require('~/components/Initials.vue'),
     AutogrowTextarea: require('~/components/AutogrowTextarea.vue')
   },
   watch: {
