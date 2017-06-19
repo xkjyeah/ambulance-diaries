@@ -30724,7 +30724,7 @@ exports = module.exports = __webpack_require__(35)(undefined);
 
 
 // module
-exports.push([module.i, ".entry{width:100%;display:flex;flex-direction:row}.entry>div{flex:0 0 4em;padding:5px;border-right:1px solid #000}.entry>div .textarea{white-space:pre-wrap}.entry>div.index{flex-basis:2em}@media print{.entry>div.twoway{flex-basis:2em}}.entry>div.time{flex-basis:8em}.entry>div.description{flex-grow:1}@media print{.entry>div.actions,.entry>div.indicator{display:none}}.entry.entry-header{font-weight:700;border-bottom:.5px solid #000}.entry.entry-content:hover{background-color:#def}@media print{.entry.entry-content{border:.5px dashed #000}}.entry.is-event.entry-content:nth-child(2n){background-color:#ffc}.entry.is-event.entry-content:nth-child(odd){background-color:#eec}.entry:not(.is-event).entry-content:nth-of-type(2n){background-color:#ddd}", ""]);
+exports.push([module.i, ".entry{width:100%;display:flex;flex-direction:row}.entry>div{flex:0 0 4em;padding:5px;border-right:1px solid #000}.entry>div .textarea{white-space:pre-wrap}.entry>div.index{flex-basis:2em}@media print{.entry>div.twoway{flex-basis:2em}}.entry>div.time{flex-basis:8em}.entry>div.description{flex-grow:1}@media print{.entry>div.actions,.entry>div.editedBy,.entry>div.indicator{display:none}}.entry.entry-header{font-weight:700;border-bottom:.5px solid #000}.entry.entry-content:hover{background-color:#def}@media print{.entry.entry-content{border:.5px dashed #000}}.entry.is-event.entry-content:nth-child(2n){background-color:#ffc}.entry.is-event.entry-content:nth-child(odd){background-color:#eec}.entry:not(.is-event).entry-content:nth-of-type(2n){background-color:#ddd}", ""]);
 
 // exports
 
