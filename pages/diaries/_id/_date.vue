@@ -2,12 +2,15 @@
   <div class="container" v-if="mount">
     <div class="left">
 
+      <br/>
+      <br/>
+
       <div v-if="!user">
-        <button @click="logIn()">Log In</button>
+        <button @click="logIn()" class="center-button">Log In</button>
       </div>
       <div v-else>
         Logged in as {{user.email}}
-        <button @click="logOut()">Log Out</button>
+        <button @click="logOut()" class="center-button">Log Out</button>
       </div>
       <br/>
       <br/>
@@ -18,7 +21,7 @@
       <br/>
 
       <div>
-        <button @click="addEntry" class="btn btn-primary">
+        <button @click="addEntry" class="btn btn-primary center-button">
           <span class="glyphicon glyphicon-plus"></span>
           Add Entry
         </button>
@@ -41,7 +44,16 @@
         {{syncError.message}}
       </div>
 
-      <div class="entry-list">
+      <div v-if="!user">
+        <br/>
+        <br/>
+        Please log in on the left hand side
+
+        <br/>
+        <br/>
+      </div>
+
+      <div v-if="user" class="entry-list">
 
         <template v-if="entries">
           <EntryHeader @sort="filter.order = $event.order, filter.orderBy=$event.orderBy"
@@ -374,6 +386,12 @@ export default {
   .right {
     flex: 1 1 auto;
   }
+}
+
+.center-button {
+  margin: 1em 0.5em;
+  display: block;
+  margin: auto;
 }
 
 .entry-list {
