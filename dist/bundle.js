@@ -26276,6 +26276,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _firebase = __webpack_require__(69);
 
@@ -30809,7 +30821,7 @@ exports = module.exports = __webpack_require__(35)(undefined);
 
 
 // module
-exports.push([module.i, "@media print{.container .left{display:none}}.container{display:flex;flex-direction:row;width:100%}.container .left{flex:0 1 240px}.container .right{flex:1 1 auto}.entry-list,.entry-list tbody tr td.team input[type=text]{width:100%}.entry-list tbody tr td.index{text-align:center}.entry-list tbody tr td.time input[type=number],.entry-list tbody tr td.time input[type=text]{width:50%}.entry-list thead tr th.team,.entry-list thead tr th.time{width:8em}.entry-list thead tr th.description{width:50%}.entry-list thead tr th{width:4em;border-right:.5px solid #000;border-left:.5px solid #000}.entry-list thead tr th:last-child{width:5%}.entry-list tbody tr td{position:relative;line-height:1;border-right:.5px solid #000;border-left:.5px solid #000}.entry-list tbody tr td input[type=number],.entry-list tbody tr td input[type=text]{width:4em}.entry-list tbody tr td textarea{width:100%}.entry-list tbody tr td input[type=number],.entry-list tbody tr td input[type=text],.entry-list tbody tr td textarea{background:transparent;border:.5px solid #ddd;margin:0;padding:0;height:20px;display:inline-block;vertical-align:baseline}.entry-list th:not(.sortable){background-color:#ddd}.entry-list th.sortable{background-color:#fff;position:relative;cursor:pointer}.entry-list th.sortable.sort-asc:after{content:\"\\2C4\";position:absolute;bottom:.5em;right:.5em}.entry-list th.sortable.sort-desc:after{content:\"\\2C5\";position:absolute;bottom:.5em;right:.5em}", ""]);
+exports.push([module.i, "@media print{.container .left{display:none}}.container{display:flex;flex-direction:row;width:100%}.container .left{flex:0 1 240px}.container .right{flex:1 1 auto}.center-button{margin:1em .5em;display:block;margin:auto}.entry-list,.entry-list tbody tr td.team input[type=text]{width:100%}.entry-list tbody tr td.index{text-align:center}.entry-list tbody tr td.time input[type=number],.entry-list tbody tr td.time input[type=text]{width:50%}.entry-list thead tr th.team,.entry-list thead tr th.time{width:8em}.entry-list thead tr th.description{width:50%}.entry-list thead tr th{width:4em;border-right:.5px solid #000;border-left:.5px solid #000}.entry-list thead tr th:last-child{width:5%}.entry-list tbody tr td{position:relative;line-height:1;border-right:.5px solid #000;border-left:.5px solid #000}.entry-list tbody tr td input[type=number],.entry-list tbody tr td input[type=text]{width:4em}.entry-list tbody tr td textarea{width:100%}.entry-list tbody tr td input[type=number],.entry-list tbody tr td input[type=text],.entry-list tbody tr td textarea{background:transparent;border:.5px solid #ddd;margin:0;padding:0;height:20px;display:inline-block;vertical-align:baseline}.entry-list th:not(.sortable){background-color:#ddd}.entry-list th.sortable{background-color:#fff;position:relative;cursor:pointer}.entry-list th.sortable.sort-asc:after{content:\"\\2C4\";position:absolute;bottom:.5em;right:.5em}.entry-list th.sortable.sort-desc:after{content:\"\\2C5\";position:absolute;bottom:.5em;right:.5em}", ""]);
 
 // exports
 
@@ -39264,13 +39276,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "container"
   }, [_c('div', {
     staticClass: "left"
-  }, [(!_vm.user) ? _c('div', [_c('button', {
+  }, [_c('br'), _vm._v(" "), _c('br'), _vm._v(" "), (!_vm.user) ? _c('div', [_c('button', {
+    staticClass: "center-button",
     on: {
       "click": function($event) {
         _vm.logIn()
       }
     }
   }, [_vm._v("Log In")])]) : _c('div', [_vm._v("\n      Logged in as " + _vm._s(_vm.user.email) + "\n      "), _c('button', {
+    staticClass: "center-button",
     on: {
       "click": function($event) {
         _vm.logOut()
@@ -39282,7 +39296,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": _vm.chosenDateAsDate
     }
   }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', [_c('button', {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-primary center-button",
     on: {
       "click": _vm.addEntry
     }
@@ -39294,7 +39308,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e(), _vm._v(" "), _c('div')], 1), _vm._v(" "), _c('div', {
     staticClass: "right"
-  }, [(_vm.syncError) ? _c('div', [_vm._v("\n      Oh noes! Error synchronizing!\n      " + _vm._s(_vm.syncError.message) + "\n    ")]) : _vm._e(), _vm._v(" "), _c('div', {
+  }, [(_vm.syncError) ? _c('div', [_vm._v("\n      Oh noes! Error synchronizing!\n      " + _vm._s(_vm.syncError.message) + "\n    ")]) : _vm._e(), _vm._v(" "), (!_vm.user) ? _c('div', [_c('br'), _vm._v(" "), _c('br'), _vm._v("\n      Please log in on the left hand side\n\n      "), _c('br'), _vm._v(" "), _c('br')]) : _vm._e(), _vm._v(" "), (_vm.user) ? _c('div', {
     staticClass: "entry-list"
   }, [(_vm.entries) ? [_c('EntryHeader', {
     attrs: {
@@ -39326,7 +39340,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": __webpack_require__(390)
     }
-  })])], 2)])]) : _c('div', [_vm._v("\n  Not mounted for scriptsrc\n")])
+  })])], 2) : _vm._e()])]) : _c('div', [_vm._v("\n  Not mounted for scriptsrc\n")])
 },staticRenderFns: []}
 
 /***/ }),
