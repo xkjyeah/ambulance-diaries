@@ -307,7 +307,8 @@ export default {
         [newKey]: {
           id: newKey,
           data: {
-            id: newKey
+            id: newKey,
+            lastEditedBy: this.user.displayName,
           },
           lastModified: null,
         }
