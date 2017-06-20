@@ -11,7 +11,7 @@
     Add another user:
     <input type="email" v-model="email" placeholder="john@example.com"/>
     <input type="email" v-model="permissions" placeholder="read,write,admin"/>
-    <a href="#" @click.prevent="add(email.email)">Add</a>
+    <a href="#" @click.prevent="add(email)">Add</a>
   </div>
 </div>
 </template>
