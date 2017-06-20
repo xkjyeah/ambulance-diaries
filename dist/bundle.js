@@ -26529,7 +26529,8 @@ exports.default = {
       this.uncommitted = _extends({}, this.uncommitted, _defineProperty({}, newKey, {
         id: newKey,
         data: {
-          id: newKey
+          id: newKey,
+          lastEditedBy: this.user.displayName
         },
         lastModified: null
       }));
