@@ -48,13 +48,12 @@
         <br/>
         <br/>
         Please log in on the left hand side
-
         <br/>
         <br/>
       </div>
 
       <div v-if="user" class="entry-list">
-
+        <h3>{{f.date(chosenDateAsDate, 'dd mmmm yyyy')}}</h3>
         <template v-if="entries">
           <EntryHeader @sort="filter.order = $event.order, filter.orderBy=$event.orderBy"
             :order="filter.order"
@@ -71,6 +70,15 @@
         <div v-else>
           <img src="../../../assets/img/spinner.svg" />
         </div>
+
+        <br/>
+        <br/>
+        <button @click="addEntry" class="btn btn-primary center-button">
+          <span class="glyphicon glyphicon-plus"></span>
+          Add Entry
+        </button>
+        <br/>
+        <br/>
       </div>
     </div>
   </div>
@@ -126,6 +134,11 @@ export default {
     SortTh: require('~/components/SortTh.vue'),
   },
   computed: {
+    f () {
+      return {
+        date: require('dateformat')
+      }
+    },
     chosenDate () {
       const re = /^(20[0-9]{2})-([0-9]{2})-([0-9]{2})$/
 
