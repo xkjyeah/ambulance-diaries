@@ -35,11 +35,12 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.(png|gif|jpg|jpeg|svg)$/,
-				loader: "url-loader",
+				test: /\.(png|gif|jpg|jpeg|svg|woff2|ttf|eot|woff)$/,
+				loader: "file-loader",
 				query: {
 					limit: 10000,
-          name: '[name].[ext]?[hash:7]',
+          name: '[name]-[hash:7].[ext]',
+					publicPath: 'dist/'
 				}
 			}
 		],

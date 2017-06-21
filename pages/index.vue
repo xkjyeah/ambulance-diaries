@@ -11,5 +11,9 @@
   </div>
 </template>
 
-<script>
-</script>
+<style scoped>
+.container {
+  text-align: center;
+  margin: 2em;
+}
+</style>

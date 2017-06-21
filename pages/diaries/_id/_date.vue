@@ -1,41 +1,34 @@
 <template>
   <div class="container" v-if="mount">
-    <div class="left">
+    <div class="left" :class="{unroll: unroll}">
+      <section class="mobile-only">
+        <button @click="unroll = !unroll" class="center-button"><i class="mdi mdi-menu"></i></button>
+      </section>
 
-      <br/>
-      <br/>
+      <section>
+        <div v-if="!user">
+          <button @click="logIn()" class="center-button">Log In</button>
+        </div>
+        <div v-else>
+          Logged in as {{user.email}}
+          <button @click="logOut()" class="center-button">Log Out</button>
+        </div>
+      </section>
 
-      <div v-if="!user">
-        <button @click="logIn()" class="center-button">Log In</button>
-      </div>
-      <div v-else>
-        Logged in as {{user.email}}
-        <button @click="logOut()" class="center-button">Log Out</button>
-      </div>
-      <br/>
-      <br/>
+      <section>
+        <Calendar :month="chosenDateAsDate" :value="chosenDateAsDate" />
+      </section>
 
-      <Calendar :month="chosenDateAsDate" :value="chosenDateAsDate" />
-
-      <br/>
-      <br/>
-
-      <div>
+      <section>
         <button @click="addEntry" class="btn btn-primary center-button">
           <span class="glyphicon glyphicon-plus"></span>
           Add Entry
         </button>
-      </div>
-      <br/>
-      <br/>
+      </section>
 
-      <FirebaseACL v-if="user" :store="`acls/${this.$route.params.id}`"/>
-      <div>
-        <!-- <label>
-          <input type="checkbox" v-model="showExtra" />
-          Show Extra
-        </label> -->
-      </div>
+      <section>
+        <FirebaseACL v-if="user" :store="`acls/${this.$route.params.id}`"/>
+      </section>
     </div>
     <div class="right">
 
@@ -106,6 +99,7 @@ export default {
         order: 'asc',
         orderBy: 'data.startTime',
       },
+      unroll: false,
       user: null,
     }
   },
@@ -389,22 +383,59 @@ export default {
     display: none;
   }
 }
-.container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  .left {
-    flex: 0 1 240px;
-  }
-  .right {
-    flex: 1 1 auto;
+
+@media (min-width: 701px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .left {
+      flex: 0 1 240px;
+
+      .center-button {
+        margin: 1em 0.5em;
+        display: block;
+        margin: auto;
+      }
+
+      section {
+        margin: 1em 0;
+      }
+    }
+    .right {
+      flex: 1 1 auto;
+    }
   }
 }
 
-.center-button {
-  margin: 1em 0.5em;
-  display: block;
-  margin: auto;
+@media (max-width: 700px) {
+  .container {
+    display: block;
+    width: 800px;
+
+    .left {
+      border: solid 1px black;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+      overflow: hidden;
+      max-height: 3em;
+      transition: max-height 0.3s ease;
+
+      .center-button {
+        margin: 0.5em;
+      }
+
+      section {
+        margin: 0.5em 0 1.5em;
+      }
+      &.unroll {
+        max-height: 1500px;
+      }
+    }
+
+    .right {
+    }
+  }
 }
 
 .entry-list {

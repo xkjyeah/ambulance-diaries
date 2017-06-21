@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import assert from 'assert';
 
 require('~/plugins/firebase')
+require('mdi/scss/materialdesignicons.scss')
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
