@@ -390,6 +390,10 @@ export default {
     flex-direction: row;
     width: 100%;
 
+    .mobile-only {
+      display: none;
+    }
+
     .left {
       flex: 0 1 240px;
 

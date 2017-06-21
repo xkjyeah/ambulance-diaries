@@ -6,7 +6,7 @@ ghPages.publish(
     src: [
       'index.html',
       'assets/**',
-      'dist/bundle.js',
+      'dist/**',
     ]
   }
 )
