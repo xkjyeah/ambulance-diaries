@@ -39622,7 +39622,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Nursing Home Bookings")])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
-      "href": "https://xkjyeah.github.io/ams-certs"
+      "href": "https://xkjyeah.github.io/certs"
     }
   }, [_vm._v("Staff Certificates")])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
