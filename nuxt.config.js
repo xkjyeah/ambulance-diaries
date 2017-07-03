@@ -36,7 +36,8 @@ module.exports = {
     }
   },
   plugins: [
-    '~plugins/firebase.js'
+    '~plugins/firebase.js',
+    '~plugins/icons.js'
   ],
   router: {
     mode: 'hash'

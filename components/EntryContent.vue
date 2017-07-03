@@ -1,7 +1,10 @@
 <template>
   <div class="entry entry-content" :class="{
     cancelled: entry.status === 'cancelled',
-    'is-event': (/event/i).test(entry.source)
+    'is-event': (/event/i).test(entry.source),
+
+    completed: entry.completed,
+    soon: entry._isSoon,
     }">
     <div class="index">
       {{index + 1}}
@@ -52,14 +55,24 @@
         href="#"
         @click.prevent="updateEntry('status', 'cancelled')"
           v-if="entry.status !== 'cancelled'">
-        Cancel
+        <i class="mdi mdi-cancel"></i>
       </a>
+
       <a class="btn btn-xs btn-success"
         href="#"
         @click.prevent="updateEntry('status', null)"
           v-else>
-        <!-- <span class="glyphicon glyphicon-repeat"></span> -->
-        Restore
+        <i class="mdi mdi-backup-restore"></i>
+      </a>
+
+      &nbsp;
+
+      <a class="btn btn-xs btn-danger"
+        href="#"
+        @click.prevent="updateEntry('completed', !entry.completed)"
+        >
+        <i v-if="!entry.completed" class="mdi mdi-checkbox-marked-circle-outline"></i>
+        <i v-else class="mdi mdi-checkbox-marked-circle"></i>
       </a>
 
       <!-- view history -->
@@ -85,6 +98,7 @@ function blankEntry () {
     time: null,
     description: null,
     status: null,
+    completed: false,
     lastModified: null,
     lastSaved: null
   }
@@ -153,6 +167,13 @@ export default {
 
   .invalid {
     background-color: #FCC;
+  }
+
+  &.completed:nth-child(even) > div {
+    background-color: #8F8;
+  }
+  &.completed:nth-child(odd) > div {
+    background-color: #AFA;
   }
 }
 </style>

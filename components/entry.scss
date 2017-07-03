@@ -12,6 +12,10 @@
       white-space: pre-wrap;
     }
 
+    &.team {
+      flex-basis: 5.5em;
+    }
+
     &.index {
       flex-basis: 2em;
     }
