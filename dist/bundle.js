@@ -25982,6 +25982,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 function blankEntry() {
@@ -26001,7 +26002,7 @@ function blankEntry() {
 }
 
 exports.default = {
-  props: ['index', 'value', 'lastModified', 'lastSaved', 'showExtra'],
+  props: ['index', 'value', 'lastModified', 'lastSaved', 'showExtra', 'now', 'date'],
   data: function data() {
     return {
       entry: null,
@@ -26039,9 +26040,33 @@ exports.default = {
 
     sync: function sync() {
       this.$emit('input', this.entry);
+    },
+    timeStatus: function timeStatus(entry) {
+      var start = combineDateTime(this.date, entry.startTime);
+      var end = combineDateTime(this.date, entry.endTime);
+
+      if (!start) {
+        return false;
+      } else if (!end) {
+        return Math.abs(this.now - start.getTime()) < 15 * 60000 ? 'soon' : false;
+      } else {
+        return Math.abs(this.now - start.getTime()) < 15 * 60000 ? 'soon' : this.now < end.getTime() ? 'soon' : this.now - end.getTime() < 15 * 60000 ? 'over' : false;
+      }
     }
   }
 };
+
+
+var hhmmRE = /([0-9]{2}):([0-9]{2})/;
+
+function combineDateTime(date, timeStr) {
+  if (!timeStr || !date) return null;
+
+  var match = timeStr.match(hhmmRE);
+  if (!match) return null;
+
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(match[1]), parseInt(match[2]));
+}
 
 /***/ }),
 /* 158 */
@@ -26372,7 +26397,6 @@ exports.default = {
       } else {
         var match = value.match(timeRE);
         if (match) {
-          console.log([(0, _leftPad2.default)(match[1], 2, '0'), (0, _leftPad2.default)(match[2], 2, '0')].join(':'));
           this.$emit('input', [(0, _leftPad2.default)(match[1], 2, '0'), (0, _leftPad2.default)(match[2], 2, '0')].join(':'));
         } else {
           this.$emit('input', this.value
@@ -26541,6 +26565,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 var _firebase = __webpack_require__(69);
 
@@ -26574,15 +26600,23 @@ exports.default = {
         orderBy: 'data.startTime'
       },
       unroll: false,
-      user: null
+      user: null,
+      now: Date.now()
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
+
+    this.$interval = setInterval(function () {
+      _this.now = Date.now();
+    }, 60000);
+  },
+  mounted: function mounted() {
+    var _this2 = this;
 
     this.mount = true;
     _firebase2.default.auth().onAuthStateChanged(function () {
-      _this.user = _lodash2.default.clone(_firebase2.default.auth().currentUser
+      _this2.user = _lodash2.default.clone(_firebase2.default.auth().currentUser
 
       // Update our user entry
       );var currentUser = _firebase2.default.auth().currentUser;
@@ -26634,14 +26668,14 @@ exports.default = {
       return _firebase2.default.database().ref('countCache/' + this.$route.params.id + '/' + this.chosenDate);
     },
     mergedEntries: function mergedEntries() {
-      var _this2 = this;
+      var _this3 = this;
 
       // Merge entries committed with current changes
       var entryIds = _lodash2.default.keyBy(this.entries, 'id');
 
       var result = this.entries.map(function (entry) {
         // For now, automatically discard uncommitted changes
-        var uncommitted = _this2.uncommitted[entry.id];
+        var uncommitted = _this3.uncommitted[entry.id];
         var hasUncommitedChanges = uncommitted && uncommitted.lastModified >= entry.lastModified;
         var mergedData = hasUncommitedChanges ? uncommitted.data : entry.data;
 
@@ -26663,7 +26697,7 @@ exports.default = {
       return result;
     },
     sortedEntries: function sortedEntries() {
-      var _this3 = this;
+      var _this4 = this;
 
       var priorities = [function (t) {
         return (_lodash2.default.get(t, 'data.source') || '').toLowerCase().indexOf('event') !== -1;
@@ -26672,8 +26706,6 @@ exports.default = {
       }, function (t) {
         return t.lastSaved;
       }];
-
-      console.log(this.mergedEntries);
 
       var _priorities$reduce = priorities.reduce(function (_ref, f) {
         var _ref2 = _slicedToArray(_ref, 2),
@@ -26695,7 +26727,7 @@ exports.default = {
       partitioned.push(lastPartition);
 
       return _lodash2.default.flatten(partitioned.map(function (r) {
-        return _lodash2.default.orderBy(r, [_this3.filter.orderBy], [_this3.filter.order]);
+        return _lodash2.default.orderBy(r, [_this4.filter.orderBy], [_this4.filter.order]);
       }));
     },
     activeCount: function activeCount() {
@@ -26715,7 +26747,7 @@ exports.default = {
     dbResource: {
       immediate: true,
       handler: function handler(res, oldRes) {
-        var _this4 = this;
+        var _this5 = this;
 
         if (oldRes) oldRes.off();
         if (!res) return;
@@ -26724,9 +26756,9 @@ exports.default = {
           var rv = r.val();
 
           if (!rv) {
-            _this4.entries = [];
+            _this5.entries = [];
           } else {
-            _this4.entries = (0, _lodash2.default)(rv).toPairs().map(function (_ref3) {
+            _this5.entries = (0, _lodash2.default)(rv).toPairs().map(function (_ref3) {
               var _ref4 = _slicedToArray(_ref3, 2),
                   id = _ref4[0],
                   data = _ref4[1];
@@ -26763,7 +26795,7 @@ exports.default = {
     },
 
     sync: _lodash2.default.throttle(function () {
-      var _this5 = this;
+      var _this6 = this;
 
       // Previous sync in progress
       if (this.currentSync) {
@@ -26778,11 +26810,11 @@ exports.default = {
         }).fromPairs().value();
 
         this.currentSync = this.dbResource.update(updates).then(function () {
-          _this5.currentSync = null;
-          _this5.syncError = false;
+          _this6.currentSync = null;
+          _this6.syncError = false;
 
           // clear out the old commits
-          _this5.uncommitted = (0, _lodash2.default)(_this5.uncommitted).toPairs().filter(function (_ref5) {
+          _this6.uncommitted = (0, _lodash2.default)(_this6.uncommitted).toPairs().filter(function (_ref5) {
             var _ref6 = _slicedToArray(_ref5, 2),
                 key = _ref6[0],
                 value = _ref6[1];
@@ -26791,8 +26823,8 @@ exports.default = {
           }).fromPairs().value();
         }).catch(function (err) {
           console.log(err);
-          _this5.syncError = err;
-          _this5.currentSync = null;
+          _this6.syncError = err;
+          _this6.currentSync = null;
         });
       }
     }, 1000, { leading: false, trailing: true }),
@@ -26808,19 +26840,19 @@ exports.default = {
       }));
     },
     updateCounts: function updateCounts() {
-      var _this6 = this;
+      var _this7 = this;
 
       if (!this.cacheResource || this.activeCount === null) return;
 
       this.cacheResource.on('value', function (c) {
         var cv = c.val();
 
-        if (_this6.activeCount === 0) {
+        if (_this7.activeCount === 0) {
           if (cv !== null && cv !== undefined) {
-            _this6.cacheResource.remove();
+            _this7.cacheResource.remove();
           }
-        } else if (c.val() !== _this6.activeCount) {
-          _this6.cacheResource.set(_this6.activeCount);
+        } else if (c.val() !== _this7.activeCount) {
+          _this7.cacheResource.set(_this7.activeCount);
         }
       });
     },
@@ -26845,6 +26877,7 @@ exports.default = {
   destroyed: function destroyed() {
     this.dbResource && this.dbResource.off();
     this.cacheResource && this.cacheResource.off();
+    window.clearInterval(this.$interval);
   }
 };
 
@@ -31103,7 +31136,7 @@ exports = module.exports = __webpack_require__(26)(undefined);
 
 
 // module
-exports.push([module.i, ".entry.cancelled,.entry.cancelled input,.entry.cancelled textarea{text-decoration:line-through}.entry .invalid{background-color:#fcc}.entry.completed:nth-child(2n)>div{background-color:#8f8}.entry.completed:nth-child(odd)>div{background-color:#afa}", ""]);
+exports.push([module.i, ".entry.cancelled,.entry.cancelled input,.entry.cancelled textarea{text-decoration:line-through}.entry .invalid{background-color:#fcc}.entry.completed:nth-child(2n)>div{background-color:#8f8}.entry.completed:nth-child(odd)>div{background-color:#afa}.entry.soon{border:2px solid red;box-sizing:border-box}.entry.over{border:2px dotted #c66;box-sizing:border-box}", ""]);
 
 // exports
 
@@ -39436,7 +39469,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "showExtra": _vm.showExtra,
         "value": entry.data,
         "lastSaved": entry.lastSaved,
-        "lastModified": entry.lastModified
+        "lastModified": entry.lastModified,
+        "date": _vm.chosenDateAsDate,
+        "now": _vm.now
       },
       on: {
         "input": function($event) {
@@ -39470,7 +39505,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         'is-event': (/event/i).test(_vm.entry.source),
 
         completed: _vm.entry.completed,
-        soon: _vm.entry._isSoon,
+        soon: _vm.timeStatus(_vm.entry) === 'soon',
+        over: _vm.timeStatus(_vm.entry) === 'over',
     }
   }, [_c('div', {
     staticClass: "index"
