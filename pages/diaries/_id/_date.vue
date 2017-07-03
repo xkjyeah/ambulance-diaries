@@ -29,6 +29,10 @@
       <section>
         <FirebaseACL v-if="user" :store="`acls/${this.$route.params.id}`"/>
       </section>
+
+      <section>
+        <ExternalLinks />
+      </section>
     </div>
     <div class="right">
 
@@ -124,6 +128,7 @@ export default {
     EntryContent: require('~/components/EntryContent.vue'),
     EntryHeader: require('~/components/EntryHeader.vue'),
     FirebaseACL: require('~/components/FirebaseACL.vue'),
+    ExternalLinks: require('~/components/ExternalLinks.vue'),
     Calendar: require('~/components/Calendar.vue'),
     SortTh: require('~/components/SortTh.vue'),
   },
