@@ -4,7 +4,8 @@
     'is-event': (/event/i).test(entry.source),
 
     completed: entry.completed,
-    soon: entry._isSoon,
+    soon: timeStatus(entry) === 'soon',
+    over: timeStatus(entry) === 'over',
     }">
     <div class="index">
       {{index + 1}}
@@ -105,7 +106,7 @@ function blankEntry () {
 }
 
 export default {
-  props: ['index', 'value', 'lastModified', 'lastSaved', 'showExtra'],
+  props: ['index', 'value', 'lastModified', 'lastSaved', 'showExtra', 'now', 'date'],
   data () {
     return {
       entry: null,
@@ -144,8 +145,40 @@ export default {
     },
     sync: function () {
       this.$emit('input', this.entry)
+    },
+    timeStatus (entry) {
+      const start = combineDateTime(this.date, entry.startTime)
+      const end = combineDateTime(this.date, entry.endTime)
+
+      if (!start) {
+        return false
+      } else if (!end) {
+        return (Math.abs(this.now - start.getTime()) < 15 * 60000) ? 'soon' : false
+      } else {
+        return (Math.abs(this.now - start.getTime()) < 15 * 60000) ? 'soon'
+          : (this.now < end.getTime()) ? 'soon'
+          : (this.now - end.getTime() < 15 * 60000) ? 'over'
+          : false
+      }
     }
   }
+}
+
+const hhmmRE = /([0-9]{2}):([0-9]{2})/
+
+function combineDateTime (date, timeStr) {
+  if (!timeStr || !date) return null
+
+  const match = timeStr.match(hhmmRE)
+  if (!match) return null
+
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    parseInt(match[1]),
+    parseInt(match[2]),
+  )
 }
 </script>
 <style lang="scss">
@@ -174,6 +207,15 @@ export default {
   }
   &.completed:nth-child(odd) > div {
     background-color: #AFA;
+  }
+
+  &.soon {
+    border: solid 2px red;
+    box-sizing: border-box;
+  }
+  &.over {
+    border: dotted 2px #C66;
+    box-sizing: border-box;
   }
 }
 </style>

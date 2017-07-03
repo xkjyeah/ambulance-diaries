@@ -62,6 +62,8 @@
             :value="entry.data"
             :lastSaved="entry.lastSaved"
             :lastModified="entry.lastModified"
+            :date="chosenDateAsDate"
+            :now="now"
             @input="updateEntry(entry.id, $event)" />
         </template>
         <div v-else>
@@ -105,7 +107,13 @@ export default {
       },
       unroll: false,
       user: null,
+      now: Date.now(),
     }
+  },
+  created () {
+    this.$interval = setInterval(() => {
+      this.now = Date.now()
+    }, 60000)
   },
   mounted () {
     this.mount = true
@@ -205,8 +213,6 @@ export default {
         t => (_.get(t, 'data.status')) !== 'cancelled',
         t => t.lastSaved,
       ]
-
-      console.log(this.mergedEntries)
 
       const [partitioned, lastPartition] = priorities.reduce(([acc, remaining], f) => {
         const [yes, no] = _.partition(remaining, f)
@@ -377,6 +383,7 @@ export default {
   destroyed () {
     this.dbResource && this.dbResource.off()
     this.cacheResource && this.cacheResource.off()
+    window.clearInterval(this.$interval)
   }
 }
 </script>

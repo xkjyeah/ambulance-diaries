@@ -16,10 +16,6 @@ export default {
       } else {
         const match = value.match(timeRE)
         if (match) {
-          console.log([
-            leftPad(match[1], 2, '0'),
-            leftPad(match[2], 2, '0')
-          ].join(':'))
           this.$emit('input', [
             leftPad(match[1], 2, '0'),
             leftPad(match[2], 2, '0')
