@@ -25969,6 +25969,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 function blankEntry() {
@@ -25981,6 +25994,7 @@ function blankEntry() {
     time: null,
     description: null,
     status: null,
+    completed: false,
     lastModified: null,
     lastSaved: null
   };
@@ -30977,7 +30991,7 @@ exports = module.exports = __webpack_require__(26)(undefined);
 
 
 // module
-exports.push([module.i, ".entry{width:100%;display:flex;flex-direction:row}.entry>div{flex:0 0 4em;padding:5px;border-right:1px solid #000}.entry>div .textarea{white-space:pre-wrap}.entry>div.index{flex-basis:2em}@media print{.entry>div.twoway{flex-basis:2em}}.entry>div.time{flex-basis:8em}.entry>div.description{flex-grow:1}@media print{.entry>div.actions,.entry>div.editedBy,.entry>div.indicator{display:none}}.entry.entry-header{font-weight:700;border-bottom:.5px solid #000}.entry.entry-content:hover{background-color:#def}@media print{.entry.entry-content{border:.5px dashed #000}}.entry.is-event.entry-content:nth-child(2n){background-color:#ffc}.entry.is-event.entry-content:nth-child(odd){background-color:#eec}.entry:not(.is-event).entry-content:nth-of-type(2n){background-color:#ddd}", ""]);
+exports.push([module.i, ".entry{width:100%;display:flex;flex-direction:row}.entry>div{flex:0 0 4em;padding:5px;border-right:1px solid #000}.entry>div .textarea{white-space:pre-wrap}.entry>div.team{flex-basis:5.5em}.entry>div.index{flex-basis:2em}@media print{.entry>div.twoway{flex-basis:2em}}.entry>div.time{flex-basis:8em}.entry>div.description{flex-grow:1}@media print{.entry>div.actions,.entry>div.editedBy,.entry>div.indicator{display:none}}.entry.entry-header{font-weight:700;border-bottom:.5px solid #000}.entry.entry-content:hover{background-color:#def}@media print{.entry.entry-content{border:.5px dashed #000}}.entry.is-event.entry-content:nth-child(2n){background-color:#ffc}.entry.is-event.entry-content:nth-child(odd){background-color:#eec}.entry:not(.is-event).entry-content:nth-of-type(2n){background-color:#ddd}", ""]);
 
 // exports
 
@@ -31089,7 +31103,7 @@ exports = module.exports = __webpack_require__(26)(undefined);
 
 
 // module
-exports.push([module.i, ".entry.cancelled,.entry.cancelled input,.entry.cancelled textarea{text-decoration:line-through}.entry .invalid{background-color:#fcc}", ""]);
+exports.push([module.i, ".entry.cancelled,.entry.cancelled input,.entry.cancelled textarea{text-decoration:line-through}.entry .invalid{background-color:#fcc}.entry.completed:nth-child(2n)>div{background-color:#8f8}.entry.completed:nth-child(odd)>div{background-color:#afa}", ""]);
 
 // exports
 
@@ -39453,7 +39467,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "entry entry-content",
     class: {
       cancelled: _vm.entry.status === 'cancelled',
-        'is-event': (/event/i).test(_vm.entry.source)
+        'is-event': (/event/i).test(_vm.entry.source),
+
+        completed: _vm.entry.completed,
+        soon: _vm.entry._isSoon,
     }
   }, [_c('div', {
     staticClass: "index"
@@ -39564,7 +39581,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.updateEntry('status', 'cancelled')
       }
     }
-  }, [_vm._v("\n      Cancel\n    ")]) : _c('a', {
+  }, [_c('i', {
+    staticClass: "mdi mdi-cancel"
+  })]) : _c('a', {
     staticClass: "btn btn-xs btn-success",
     attrs: {
       "href": "#"
@@ -39575,7 +39594,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.updateEntry('status', null)
       }
     }
-  }, [_vm._v("\n      Restore\n    ")])]), _vm._v(" "), _c('div', {
+  }, [_c('i', {
+    staticClass: "mdi mdi-backup-restore"
+  })]), _vm._v("\n\n     \n\n    "), _c('a', {
+    staticClass: "btn btn-xs btn-danger",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updateEntry('completed', !_vm.entry.completed)
+      }
+    }
+  }, [(!_vm.entry.completed) ? _c('i', {
+    staticClass: "mdi mdi-checkbox-marked-circle-outline"
+  }) : _c('i', {
+    staticClass: "mdi mdi-checkbox-marked-circle"
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "editedBy"
   }, [_c('Initials', {
     attrs: {
