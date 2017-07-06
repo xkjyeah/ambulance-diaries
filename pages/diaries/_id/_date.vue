@@ -164,6 +164,12 @@ export default {
     chosenDateAsDate () {
       return this.chosenDate && new Date(this.chosenDate)
     },
+    diariesDb () {
+      if (!process.BROWSER_BUILD) return null
+
+      return firebase.database()
+      .ref(`diaries`)
+    },
     dbResource () {
       if (!process.BROWSER_BUILD) return null
 
@@ -182,7 +188,7 @@ export default {
 
       const result = this.entries.map((entry) => {
         // For now, automatically discard uncommitted changes
-        const uncommitted = this.uncommitted[entry.id]
+        const uncommitted = this.uncommitted[this.makeKey(entry.id)]
         const hasUncommitedChanges = uncommitted && uncommitted.lastModified >= entry.lastModified
         const mergedData = hasUncommitedChanges
               ? uncommitted.data
@@ -197,9 +203,11 @@ export default {
       })
       // Append the new entries
       .concat(_(this.uncommitted)
-        .values()
-        .filter(c => !entryIds[c.id])
-        .map(c => ({
+        .toPairs()
+        .filter(([key, c]) => !entryIds[c.id])
+        // Ensure that the date is correct...
+        .filter(([key, c]) => this.makeKey(c.id) === key)
+        .map(([key, c]) => ({
           ...c,
           lastSaved: null,
         }))
@@ -273,6 +281,9 @@ export default {
     },
   },
   methods: {
+    makeKey (entryId) {
+      return `/${this.$route.params.id}/${this.chosenDate}/${entryId}`
+    },
     /* Does two things:
     1. update the local cache
     2. sync with firebase
@@ -280,7 +291,7 @@ export default {
     updateEntry (entryId, entry) {
       this.uncommitted = {
         ...this.uncommitted,
-        [entryId]: {
+        [this.makeKey(entryId)]: {
           id: entryId,
           data: {
             ...entry,
@@ -298,20 +309,8 @@ export default {
       } else {
         // snapshot of current changes
         const changes = this.uncommitted
-
-        // gather all the merges:
-        const updates = _(changes)
-          .values()
-          .map(c => {
-            return [
-              `/${c.id}`,
-              c
-            ]
-          })
-          .fromPairs()
-          .value()
-
-        this.currentSync = this.dbResource.update(updates)
+        
+        this.currentSync = this.diariesDb.update(changes)
           .then(() => {
             this.currentSync = null
             this.syncError = false
@@ -334,7 +333,7 @@ export default {
       const newKey = this.dbResource.push().key
       this.uncommitted = {
         ...this.uncommitted,
-        [newKey]: {
+        [this.makeKey(newKey)]: {
           id: newKey,
           data: {
             id: newKey,
