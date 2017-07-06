@@ -26610,6 +26610,12 @@ exports.default = {
     this.$interval = setInterval(function () {
       _this.now = Date.now();
     }, 60000);
+
+    window.onbeforeunload = this.$unload = function () {
+      if (_this.uncommitted) {
+        return "You have unsaved changes. Are you sure you want to navigate away?";
+      }
+    };
   },
   mounted: function mounted() {
     var _this2 = this;
@@ -26897,6 +26903,7 @@ exports.default = {
   destroyed: function destroyed() {
     this.dbResource && this.dbResource.off();
     this.cacheResource && this.cacheResource.off();
+    window.onbeforeunload = null;
     window.clearInterval(this.$interval);
   }
 };
