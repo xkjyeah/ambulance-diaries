@@ -26050,7 +26050,7 @@ exports.default = {
       } else if (!end) {
         return Math.abs(this.now - start.getTime()) < 15 * 60000 ? 'soon' : false;
       } else {
-        return Math.abs(this.now - start.getTime()) < 15 * 60000 ? 'soon' : this.now < end.getTime() ? 'soon' : this.now - end.getTime() < 15 * 60000 ? 'over' : false;
+        return this.now - start.getTime() < -15 * 60000 ? false : this.now - end.getTime() < 0 ? 'soon' : this.now - end.getTime() < 15 * 60000 ? 'over' : false;
       }
     }
   }
@@ -26612,7 +26612,7 @@ exports.default = {
     }, 60000);
 
     window.onbeforeunload = this.$unload = function () {
-      if (_this.uncommitted) {
+      if (Object.keys(_this.uncommitted).length > 0) {
         return "You have unsaved changes. Are you sure you want to navigate away?";
       }
     };
