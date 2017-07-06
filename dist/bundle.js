@@ -25792,7 +25792,7 @@ exports.default = {
     weeks: function weeks() {
       var _this2 = this;
 
-      return _lodash2.default.range(0, 5).map(function (weekNumber) {
+      return _lodash2.default.range(0, 6).map(function (weekNumber) {
         return _lodash2.default.range(0, 7).map(function (weekDay) {
           var canonical = (weekNumber * 7 + weekDay) * 24 * 3600 * 1000 + _this2.firstDayOfCalendar.getTime();
           var canonicalDate = new Date(canonical);
@@ -26477,9 +26477,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); //
 //
 //
 //
@@ -26657,6 +26657,11 @@ exports.default = {
     chosenDateAsDate: function chosenDateAsDate() {
       return this.chosenDate && new Date(this.chosenDate);
     },
+    diariesDb: function diariesDb() {
+      if (false) return null;
+
+      return _firebase2.default.database().ref('diaries');
+    },
     dbResource: function dbResource() {
       if (false) return null;
 
@@ -26675,7 +26680,7 @@ exports.default = {
 
       var result = this.entries.map(function (entry) {
         // For now, automatically discard uncommitted changes
-        var uncommitted = _this3.uncommitted[entry.id];
+        var uncommitted = _this3.uncommitted[_this3.makeKey(entry.id)];
         var hasUncommitedChanges = uncommitted && uncommitted.lastModified >= entry.lastModified;
         var mergedData = hasUncommitedChanges ? uncommitted.data : entry.data;
 
@@ -26687,9 +26692,25 @@ exports.default = {
         };
       }
       // Append the new entries
-      ).concat((0, _lodash2.default)(this.uncommitted).values().filter(function (c) {
+      ).concat((0, _lodash2.default)(this.uncommitted).toPairs().filter(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            key = _ref2[0],
+            c = _ref2[1];
+
         return !entryIds[c.id];
-      }).map(function (c) {
+      }
+      // Ensure that the date is correct...
+      ).filter(function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            key = _ref4[0],
+            c = _ref4[1];
+
+        return _this3.makeKey(c.id) === key;
+      }).map(function (_ref5) {
+        var _ref6 = _slicedToArray(_ref5, 2),
+            key = _ref6[0],
+            c = _ref6[1];
+
         return _extends({}, c, {
           lastSaved: null
         });
@@ -26707,10 +26728,10 @@ exports.default = {
         return t.lastSaved;
       }];
 
-      var _priorities$reduce = priorities.reduce(function (_ref, f) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            acc = _ref2[0],
-            remaining = _ref2[1];
+      var _priorities$reduce = priorities.reduce(function (_ref7, f) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+            acc = _ref8[0],
+            remaining = _ref8[1];
 
         var _$partition = _lodash2.default.partition(remaining, f),
             _$partition2 = _slicedToArray(_$partition, 2),
@@ -26758,10 +26779,10 @@ exports.default = {
           if (!rv) {
             _this5.entries = [];
           } else {
-            _this5.entries = (0, _lodash2.default)(rv).toPairs().map(function (_ref3) {
-              var _ref4 = _slicedToArray(_ref3, 2),
-                  id = _ref4[0],
-                  data = _ref4[1];
+            _this5.entries = (0, _lodash2.default)(rv).toPairs().map(function (_ref9) {
+              var _ref10 = _slicedToArray(_ref9, 2),
+                  id = _ref10[0],
+                  data = _ref10[1];
 
               return _extends({}, data, {
                 id: id
@@ -26779,12 +26800,16 @@ exports.default = {
     }
   },
   methods: {
+    makeKey: function makeKey(entryId) {
+      return '/' + this.$route.params.id + '/' + this.chosenDate + '/' + entryId;
+    },
+
     /* Does two things:
     1. update the local cache
     2. sync with firebase
     */
     updateEntry: function updateEntry(entryId, entry) {
-      this.uncommitted = _extends({}, this.uncommitted, _defineProperty({}, entryId, {
+      this.uncommitted = _extends({}, this.uncommitted, _defineProperty({}, this.makeKey(entryId), {
         id: entryId,
         data: _extends({}, entry, {
           lastEditedBy: this.user.displayName
@@ -26804,20 +26829,15 @@ exports.default = {
         // snapshot of current changes
         var changes = this.uncommitted;
 
-        // gather all the merges:
-        var updates = (0, _lodash2.default)(changes).values().map(function (c) {
-          return ['/' + c.id, c];
-        }).fromPairs().value();
-
-        this.currentSync = this.dbResource.update(updates).then(function () {
+        this.currentSync = this.diariesDb.update(changes).then(function () {
           _this6.currentSync = null;
           _this6.syncError = false;
 
           // clear out the old commits
-          _this6.uncommitted = (0, _lodash2.default)(_this6.uncommitted).toPairs().filter(function (_ref5) {
-            var _ref6 = _slicedToArray(_ref5, 2),
-                key = _ref6[0],
-                value = _ref6[1];
+          _this6.uncommitted = (0, _lodash2.default)(_this6.uncommitted).toPairs().filter(function (_ref11) {
+            var _ref12 = _slicedToArray(_ref11, 2),
+                key = _ref12[0],
+                value = _ref12[1];
 
             return value.lastModified > changes[key].lastModified;
           }).fromPairs().value();
@@ -26830,7 +26850,7 @@ exports.default = {
     }, 1000, { leading: false, trailing: true }),
     addEntry: function addEntry() {
       var newKey = this.dbResource.push().key;
-      this.uncommitted = _extends({}, this.uncommitted, _defineProperty({}, newKey, {
+      this.uncommitted = _extends({}, this.uncommitted, _defineProperty({}, this.makeKey(newKey), {
         id: newKey,
         data: {
           id: newKey,
