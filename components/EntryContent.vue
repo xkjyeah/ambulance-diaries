@@ -155,8 +155,8 @@ export default {
       } else if (!end) {
         return (Math.abs(this.now - start.getTime()) < 15 * 60000) ? 'soon' : false
       } else {
-        return (Math.abs(this.now - start.getTime()) < 15 * 60000) ? 'soon'
-          : (this.now < end.getTime()) ? 'soon'
+        return (this.now - start.getTime() < -15 * 60000) ? false
+          : (this.now - end.getTime() < 0) ? 'soon'
           : (this.now - end.getTime() < 15 * 60000) ? 'over'
           : false
       }

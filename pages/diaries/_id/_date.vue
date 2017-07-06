@@ -114,6 +114,12 @@ export default {
     this.$interval = setInterval(() => {
       this.now = Date.now()
     }, 60000)
+
+    window.onbeforeunload = this.$unload = () => {
+      if (Object.keys(this.uncommitted).length > 0) {
+        return "You have unsaved changes. Are you sure you want to navigate away?"
+      }
+    }
   },
   mounted () {
     this.mount = true
@@ -309,7 +315,7 @@ export default {
       } else {
         // snapshot of current changes
         const changes = this.uncommitted
-        
+
         this.currentSync = this.diariesDb.update(changes)
           .then(() => {
             this.currentSync = null
@@ -382,6 +388,7 @@ export default {
   destroyed () {
     this.dbResource && this.dbResource.off()
     this.cacheResource && this.cacheResource.off()
+    window.onbeforeunload = null
     window.clearInterval(this.$interval)
   }
 }
